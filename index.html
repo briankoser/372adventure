@@ -8,7 +8,11 @@
     <title>372 Adventure</title>
     <meta name="description" content="A story game for the fans of the 372 Pages We'll Never Get Back podcast">
 
-    <style></style>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,15 +22,69 @@
                 <span class="title">372 Adventure</span>
                 <a href="#game">Game</a>
                 <a href="#about">About</a>
+                <span>
+                    <span>R</span>
+                    <span>A</span>
+                    <span>E</span>
+                    <span>T</span>
+                    <span>F</span>
+                    <span>B</span>
+                    <span>M</span>                    
+                </span>
             </nav>
         </div>
     </header>
     <main>
-        Game goes here
+        <div id="d-explanation" class="screen">
+            <p>explanation</p>
+            <button class="next">Ready Player One</button>
+        </div>
+
+        <div id="d-intro" class="screen hidden">
+            <h1>Prologue</h1>
+            <p>intro</p>
+            <button id="b-intro" class="next">Go to Planet 1</button>
+        </div>
+
+        <div id="d-ready-player-one" class="screen hidden">
+            <h1>ready player one</h1>
+            <div class="choices">
+                <button id="b-ready-player-one-1" class="next">Choice 1</button>
+                <button id="b-ready-player-one-1" class="next">Choice 2</button>
+                <button id="b-ready-player-one-3" class="next">Choice 3</button>
+            </div>
+        </div>
     </main>
     <footer>
         Credits?
     </footer>
-    <script></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let screenNames = ['d-explanation', 'd-intro', 'd-ready-player-one'];
+
+            let screens = document.querySelectorAll('.screen .next');
+            
+            let getNextScreen = (currentId) => screenNames[screenNames.indexOf(currentId) + 1];
+            let hide = (element) => element.style.display = 'none';
+            let show = (element) => element.style.display = 'block';
+            let advance = (currentId) => {
+                let current = document.getElementById(currentId);
+                let next = document.getElementById(getNextScreen(currentId));
+                console.log(`Leaving ${current.id}`);
+                hide(current);
+                console.log(`Entering ${next.id}`);
+                show(next);
+            };
+
+
+            
+            Array.from(screens).forEach(screen => {
+                screen.addEventListener('click', (clickEvent) => {
+                    advance(clickEvent.target.parentElement.id);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
