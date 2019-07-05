@@ -22,7 +22,7 @@
                 <span class="title">372 Adventure</span>
                 <a href="#game">Game</a>
                 <a href="#about">About</a>
-                <span>
+                <!--<span>
                     <span>R</span>
                     <span>A</span>
                     <span>E</span>
@@ -30,29 +30,76 @@
                     <span>F</span>
                     <span>B</span>
                     <span>M</span>                    
-                </span>
+                </span>-->
             </nav>
         </div>
     </header>
     <main>
-        <div id="d-explanation" class="screen">
-            <p>explanation</p>
-            <button class="next">Ready Player One</button>
+        <div id="d-intro" class="screen">
+            <p>
+                <figure>
+                    <q>Being human totally sucks most of the time. Video games are the only thing that makes life bearable.</q>
+                    <figcaption>James Halliday, <i>Ready Player One</i></figcaption>
+                </figure>
+            </p>
+            <p>
+                <figure>
+                    <q>A billionaire wrote that.</q>
+                    <figcaption>Conor Lestowka, "372 Pages We'll Never Get Back", Episode 1</figcaption> <!-- 25:18 -->
+                </figure>
+            </p>
+            <p><button class="next">Ready Player One</button>
         </div>
 
-        <div id="d-intro" class="screen hidden">
+        <div id="d-prologue" class="screen hidden">
             <h1>Prologue</h1>
-            <p>intro</p>
-            <button id="b-intro" class="next">Go to Planet 1</button>
+            <p>I put down my corn chips and scratched myself.
+            <p>It's 2044, and I'm playing "The Oasis", the world's most popular online game. The creators named it after a game in a classic '10s book, Ready Player One. Like the game in the book, you can fly spaceships around and visit virtual planets containing everything imaginable. But the real game within the game is the monthly Hunt. Each month, the game designers choose a themed group of planets and hide a key on each one.
+            <p>This month's contest was about to start. I finished my corn chips and put down the bag. As I stared at the screen, the subject of the new Hunt faded in to visibility:
+            <p>372 Pages
+            <p>What I can only describe as a Cheshire grin spread slowly over my face. Over the past few years, I listened to every episode of the classic podcast eight times.
+            <p>I watched every episode of the classic '80s show Mystery Science Theatre 3000, including the Netflix revival and the '30s VR series.
+            <p>I memorized every riff from every movie that Rifftrax ever riffed.
+            <p>I read all 29 of Conor Lastowka's published novels several times each.
+            <p>I watched every 372 Pages documentary.
+            <p>I even listened to all of the side projects.
+            <p>The grin remained spread across my face like The Joker in the 1989 film Batman, played by Jack Nicholson. I switched my microphone on and said, "N3lson, you ready for this?"
+            <p>A voice seemed to crackle over my headset. "Lord N3lson to you, crapburger!"
+            <p>I shook my head, still grinning. I had never met N3lson in real life, but I instinctively knew he looked exactly like his Oasis avatar. "Then I expect the same courtesy, lamer."
+            <p>N3lson laughed. "Alright, Odgen. Let's do this!"
+            <p>"It's on," I whispered. "It's on like Red Dawn."
+            <p><button id="b-intro" class="next">Go to Planet RP1</button>
         </div>
 
         <div id="d-ready-player-one" class="screen hidden">
-            <h1>ready player one</h1>
+            <h1>Ready Player One</h1>
+            <p>You land your spaceship (an exact replica of The Satellite of Love named "Nerdgasm") on the surface of Planet RP1. As you step through the hatch and onto the surface, you see a crowd of '80s people dressed in '80s clothes doing '80s things. You wonder if they are players or NPCs, but you're not sure and you don't really care. You push past them (not before pulling off several '80s dance moves), enter a squat building, and go down the stairs. At the bottom, you push open a door and enter...Aech's Basement! The coolest chat room anyone has ever seen. You feel like a flibbertigibbet as you survey the room and try to decide where the key could be hidden.
             <div class="choices">
-                <button id="b-ready-player-one-1" class="next">Choice 1</button>
-                <button id="b-ready-player-one-1" class="next">Choice 2</button>
-                <button id="b-ready-player-one-3" class="next">Choice 3</button>
+                <button class="choice" data-choice="1">Browse the vintage role-playing game supplements</button>
+                <button class="choice" data-choice="2">Search the closet on the far wall</button>
+                <button class="choice" data-choice="3">Check between the couch cushions</button>
             </div>
+            <div class="results">
+                <div class="result-1 result-key hidden">
+                    <p>You grab the Tomb of Horrors supplement off the top of the stack and start flipping pages. A metal object falls out of the book and into the shag carpet. You bend down and pick it up.
+                    <p class="result-points">Gain the Classic '80s Key!
+                    <button class="next">Go to Planet Armada</button>
+                </div>
+                <div class="result-2 result-item hidden">
+                    <p>You open the closet and find stacks upon stacks of weird tinned fish. On top of one stack, you see a Leopardon action figure!
+                    <p class="result-points">Gain 10 points!
+                    <button class="next">Go to Planet Armada</button>
+                </div>
+                <div class="result-3 result-lose hidden">
+                    <p>The only things you find between the couch cushions are pieces of Capt'n Crunch and the TV remote. You settle onto the couch and flip on the TV. After sitting through several commercials advertising goods and workers, Family Ties starts playing. You realize you are watching Family Ties inside a video game and instantly become depressed.
+                    <p class="result-points">Lose 1 life point!
+                    <button class="next">Go to Planet Armada</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="d-armada" class="screen hidden">
+            armada
         </div>
     </main>
     <footer>
@@ -61,29 +108,65 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
-            let screenNames = ['d-explanation', 'd-intro', 'd-ready-player-one'];
-
-            let screens = document.querySelectorAll('.screen .next');
+            let points = 0;
+            let screenNames = ['d-intro', 'd-prologue', 'd-ready-player-one', 'd-armada'];
+            let choiceButtons = document.querySelectorAll('.screen .choice');
+            let nextButtons = document.querySelectorAll('.screen .next');
             
             let getNextScreen = (currentId) => screenNames[screenNames.indexOf(currentId) + 1];
             let hide = (element) => element.style.display = 'none';
             let show = (element) => element.style.display = 'block';
-            let advance = (currentId) => {
-                let current = document.getElementById(currentId);
-                let next = document.getElementById(getNextScreen(currentId));
+
+            let advance = (current) => {
+                let next = document.getElementById(getNextScreen(current.id));
                 console.log(`Leaving ${current.id}`);
                 hide(current);
                 console.log(`Entering ${next.id}`);
                 show(next);
             };
 
+            let displayResult = (screenName, choice) => {
+                console.log(`Result ${choice} for ${screenName}`);
+                let choices = document.querySelectorAll(`#${screenName} .choices`)[0];
+                hide(choices);
+                let result = document.querySelectorAll(`#${screenName} .result-${choice}`)[0];
+                show(result);
+            };
 
-            
-            Array.from(screens).forEach(screen => {
-                screen.addEventListener('click', (clickEvent) => {
-                    advance(clickEvent.target.parentElement.id);
+            let findScreenByElement = (element) => {
+                let parent = element.parentElement;
+                
+                while (parent !== null) {
+                    if (parent.classList.contains('screen')) {
+                        break;
+                    }
+                    parent = parent.parentElement;
+                }
+
+                return parent;
+            };
+
+
+
+            Array.from(choiceButtons).forEach(button => {
+                button.addEventListener('click', (clickEvent) => {
+                    let screen = findScreenByElement(clickEvent.target);
+                    let choice = clickEvent.target.dataset.choice;
+                    console.log(`User made choice ${choice}`);
+                    displayResult(screen.id, choice);
+                    // store result
                 });
             });
+
+            Array.from(nextButtons).forEach(button => {
+                button.addEventListener('click', (clickEvent) => {
+                    let screen = findScreenByElement(clickEvent.target);
+                    advance(screen);
+                });
+            });
+
+            console.log(`Hello, fellow developer! I haven't obfuscated any code, so it's extremely easy to cheat. I only ask that you don't spoil the game for others.`);
+            console.log(`If you find any bugs, please open an issue: https://github.com/briankoser/372adventure/issues/new`);
         });
     </script>
 </body>
