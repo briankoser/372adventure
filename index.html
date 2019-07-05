@@ -35,7 +35,7 @@
         </div>
     </header>
     <main>
-        <div id="d-intro" class="screen">
+        <div id="screen-intro" class="screen">
             <p>
                 <figure>
                     <q>Being human totally sucks most of the time. Video games are the only thing that makes life bearable.</q>
@@ -51,7 +51,7 @@
             <p><button class="next">Ready Player One</button>
         </div>
 
-        <div id="d-prologue" class="screen hidden">
+        <div id="screen-prologue" class="screen hidden">
             <h1>Prologue</h1>
             <p>I put down my corn chips and scratched myself.
             <p>It's 2044, and I'm playing "The Oasis", the world's most popular online game. The creators named it after a game in a classic '10s book, Ready Player One. Like the game in the book, you can fly spaceships around and visit virtual planets containing everything imaginable. But the real game within the game is the monthly Hunt. Each month, the game designers choose a themed group of planets and hide a key on each one.
@@ -71,26 +71,26 @@
             <p><button id="b-intro" class="next">Go to Planet RP1</button>
         </div>
 
-        <div id="d-ready-player-one" class="screen hidden">
+        <div id="screen-ready-player-one" class="screen hidden">
             <h1>Ready Player One</h1>
             <p>You land your spaceship (an exact replica of The Satellite of Love named "Nerdgasm") on the surface of Planet RP1. As you step through the hatch and onto the surface, you see a crowd of '80s people dressed in '80s clothes doing '80s things. You wonder if they are players or NPCs, but you're not sure and you don't really care. You push past them (not before pulling off several '80s dance moves), enter a squat building, and go down the stairs. At the bottom, you push open a door and enter...Aech's Basement! The coolest chat room anyone has ever seen. You feel like a flibbertigibbet as you survey the room and try to decide where the key could be hidden.
             <div class="choices">
-                <button class="choice" data-choice="1">Browse the vintage role-playing game supplements</button>
-                <button class="choice" data-choice="2">Search the closet on the far wall</button>
-                <button class="choice" data-choice="3">Check between the couch cushions</button>
+                <button class="choice" data-choice="1" data-result="key">Browse the vintage role-playing game supplements</button>
+                <button class="choice" data-choice="2" data-result="item">Search the closet on the far wall</button>
+                <button class="choice" data-choice="3" data-result="lose">Check between the couch cushions</button>
             </div>
             <div class="results">
-                <div class="result-1 result-key hidden">
+                <div class="result-1 hidden">
                     <p>You grab the Tomb of Horrors supplement off the top of the stack and start flipping pages. A metal object falls out of the book and into the shag carpet. You bend down and pick it up.
                     <p class="result-points">Gain the Classic '80s Key!
                     <button class="next">Go to Planet Armada</button>
                 </div>
-                <div class="result-2 result-item hidden">
+                <div class="result-2 hidden">
                     <p>You open the closet and find stacks upon stacks of weird tinned fish. On top of one stack, you see a Leopardon action figure!
                     <p class="result-points">Gain 10 points!
                     <button class="next">Go to Planet Armada</button>
                 </div>
-                <div class="result-3 result-lose hidden">
+                <div class="result-3 hidden">
                     <p>The only things you find between the couch cushions are pieces of Capt'n Crunch and the TV remote. You settle onto the couch and flip on the TV. After sitting through several commercials advertising goods and workers, Family Ties starts playing. You realize you are watching Family Ties inside a video game and instantly become depressed.
                     <p class="result-points">Lose 1 life point!
                     <button class="next">Go to Planet Armada</button>
@@ -98,8 +98,13 @@
             </div>
         </div>
 
-        <div id="d-armada" class="screen hidden">
+        <div id="screen-armada" class="screen hidden">
             armada
+        </div>
+
+        <div id="screen-dead" class="screen hidden">
+            <p>You died. But now you know what not to do.
+            <p><button class="reset">Play again</button>
         </div>
     </main>
     <footer>
@@ -108,10 +113,15 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
-            let points = 0;
-            let screenNames = ['d-intro', 'd-prologue', 'd-ready-player-one', 'd-armada'];
+            let stats = {
+                'health': 3,
+                'keys': 0,
+                'items': 0
+            };
+            let screenNames = ['screen-intro', 'screen-prologue', 'screen-ready-player-one', 'screen-armada'];
             let choiceButtons = document.querySelectorAll('.screen .choice');
             let nextButtons = document.querySelectorAll('.screen .next');
+            let resetButtons = document.querySelectorAll('.reset');
             
             let getNextScreen = (currentId) => screenNames[screenNames.indexOf(currentId) + 1];
             let hide = (element) => element.style.display = 'none';
@@ -146,15 +156,47 @@
                 return parent;
             };
 
+            let reset = () => {
+                window.location.reload(false);
+            };
+
+            let storeResult = (result) => {
+                switch (result) {
+                    case 'key':
+                        stats.keys += 1;
+                        break;
+                    case 'item':
+                        stats.items += 1;
+                        break;
+                    case 'lose':
+                        stats.health -= 1;
+                        break;
+                    default:
+                        console.error(`Error: storeResult() passed invalid 'result' param: ${result}`);
+                        break;
+                }
+
+                console.log(stats);
+            };
+
 
 
             Array.from(choiceButtons).forEach(button => {
                 button.addEventListener('click', (clickEvent) => {
-                    let screen = findScreenByElement(clickEvent.target);
-                    let choice = clickEvent.target.dataset.choice;
+                    let button = clickEvent.target;
+                    let screen = findScreenByElement(button);
+
+                    let result = button.dataset.result;
+                    console.log(`Result is ${result}`);
+                    storeResult(result);
+
+                    let choice = button.dataset.choice;
                     console.log(`User made choice ${choice}`);
                     displayResult(screen.id, choice);
-                    // store result
+
+                    if (stats.health <= 0) {
+                        // display dead screen
+                    }
                 });
             });
 
@@ -162,6 +204,12 @@
                 button.addEventListener('click', (clickEvent) => {
                     let screen = findScreenByElement(clickEvent.target);
                     advance(screen);
+                });
+            });
+
+            Array.from(resetButtons).forEach(button => {
+                button.addEventListener('click', (clickEvent) => {
+                    reset();
                 });
             });
 
