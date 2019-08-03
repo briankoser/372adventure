@@ -9,45 +9,60 @@
     <meta name="description" content="A story game for the fans of the 372 Pages We'll Never Get Back podcast">
 
     <style>
+        body, 
+        figure { 
+            margin: 0; 
+        }
+        body, 
+        button {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 20px;
+            max-width: 36em;
+        }
+        nav {
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        nav,
+        nav a {
+            color: white;
+        }
+        main {
+            text-align: justify;
+            padding: 1em;
+        }
+        figure {
+            margin-bottom: 1em;
+        }
+        figcaption {
+            font-size: 16px;
+        }
+
         .hidden {
             display: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="site-header-block">
-            <img class="logo" src="logo.svg" />
-            <nav>
-                <span class="title">372 Adventure</span>
-                <a href="#game">Game</a>
-                <a href="#about">About</a>
-                <!--<span>
-                    <span>R</span>
-                    <span>A</span>
-                    <span>E</span>
-                    <span>T</span>
-                    <span>F</span>
-                    <span>B</span>
-                    <span>M</span>                    
-                </span>-->
-            </nav>
+    <nav>
+        <div class="title">372 Adventure</div>
+        <div>
+            <a href="#game">Game</a>
+            <a href="#about">About</a>
         </div>
-    </header>
+    </nav>
     <main>
         <div id="screen-intro" class="screen">
-            <p>
-                <figure>
-                    <q>Being human totally sucks most of the time. Video games are the only thing that makes life bearable.</q>
-                    <figcaption>James Halliday, <i>Ready Player One</i></figcaption>
-                </figure>
-            </p>
-            <p>
-                <figure>
-                    <q>A billionaire wrote that.</q>
-                    <figcaption>Conor Lestowka, "372 Pages We'll Never Get Back", Episode 1</figcaption> <!-- 25:18 -->
-                </figure>
-            </p>
+            <figure>
+                <q>Being human totally sucks most of the time. Video games are the only thing that makes life bearable.</q>
+                <figcaption>James Halliday, <i>Ready Player One</i></figcaption>
+            </figure>
+            <figure>
+                <q>A billionaire wrote that.</q>
+                <figcaption>Conor Lestowka, “372 Pages We'll Never Get Back”, Episode 1</figcaption> <!-- 25:18 -->
+            </figure>
             <p><button class="next">Ready Player One</button>
         </div>
 
@@ -57,10 +72,14 @@
             <p>It's 2044, and I'm playing "The Oasis", the world's most popular online game. The creators named it after a game in a classic '10s book, Ready Player One. Like the game in the book, you can fly spaceships around and visit virtual planets containing everything imaginable. But the real game within the game is the monthly Hunt. Each month, the game designers choose a themed group of planets and hide a key on each one.
             <p>This month's contest was about to start. I finished my corn chips and put down the bag. As I stared at the screen, the subject of the new Hunt faded in to visibility:
             <p>372 Pages
-            <p>What I can only describe as a Cheshire grin spread slowly over my face. Over the past few years, I listened to every episode of the classic podcast eight times.
+            <p>What I can only describe as a Cheshire grin spread slowly over my face. Over the past few years, I had listened to every episode of the classic podcast eight times.
             <p>I watched every episode of the classic '80s show Mystery Science Theatre 3000, including the Netflix revival and the '30s VR series.
+            <p>I continued to listen to Like Trees Walking, even though Dave Berge was now a cyborg. 
             <p>I memorized every riff from every movie that Rifftrax ever riffed.
             <p>I read all 29 of Conor Lastowka's published novels several times each.
+            <p>I knew that Conor had appeared on Jeopardy, so I watched every episode of the show.
+            <p>I convinced my drama teacher to let us put on "Ken Burns Babyfur" senior year.
+            <p>I read every book on crows and mockingbirds at my local library.
             <p>I watched every 372 Pages documentary.
             <p>I even listened to all of the side projects.
             <p>The grin remained spread across my face like The Joker in the 1989 film Batman, played by Jack Nicholson. I switched my microphone on and said, "N3lson, you ready for this?"
@@ -108,7 +127,7 @@
         </div>
     </main>
     <footer>
-        Credits?
+        
     </footer>
 
     <script>
