@@ -9,9 +9,8 @@
     <meta name="description" content="A story game for the fans of the 372 Pages We'll Never Get Back podcast">
 
     <style>
-        body, 
-        figure { 
-            margin: 0; 
+        body { 
+            margin: 0;
         }
         body, 
         button {
@@ -31,11 +30,11 @@
             color: white;
         }
         main {
-            text-align: justify;
+            /*text-align: justify;*/
             padding: 1em;
         }
         figure {
-            margin-bottom: 1em;
+            margin: 0 0 1em 0;
         }
         figcaption {
             font-size: 16px;
@@ -45,6 +44,16 @@
             text-align: left;
         }
 
+        .title {
+            font-size: 60px;
+        }
+        .title,
+        .subtitle {
+            text-align: center;
+        }
+        .next {
+            margin-top: 40px;
+        }
         .hidden {
             display: none;
         }
@@ -52,7 +61,7 @@
 </head>
 <body>
     <nav>
-        <div class="title">372 Adventure</div>
+        <div class="nav-title">372 Adventure</div>
         <div>
             <a href="#game">Game</a>
             <a href="#about">About</a>
@@ -60,6 +69,8 @@
     </nav>
     <main>
         <div id="screen-intro" class="screen">
+            <p>Gilding Lilies Studios presents</p>
+            <h1 class="title">372 Adventure</h1>
             <figure>
                 <q>Being human totally sucks most of the time. Video games are the only thing that makes life bearable.</q>
                 <figcaption>James Halliday, <i>Ready Player One</i></figcaption>
@@ -106,7 +117,7 @@
             </div>
             <div class="results">
                 <div class="result-1 hidden">
-                    <p>I-r0k ignores you as you grab the Tomb of Horrors supplement off the top of the stack and start flipping pages. An object falls out of the book and into the shag carpet. You bend down and pick it up.
+                    <p>I-r0k is browsing IMDb, trying to memorize the actor lists from every John Hughes movie. He ignores you as you grab the Tomb of Horrors supplement off the top of the stack and start flipping pages. An object falls out of the book and into the shag carpet. You bend down and pick it up.
                     <p class="result-points">Gain the Classic '80s Key!
                     <button class="next">Go to Planet Armada</button>
                 </div>
@@ -124,11 +135,96 @@
         </div>
 
         <div id="screen-armada" class="screen hidden">
-            armada
+            <h1>Armada</h1>
+            <p>You arrive on Planet Armada, which looks exactly like the moon. You dock with the moon base and leave your ship, just like Major Bill Moore in the classic sci-fi film <i>Project Moon Base</i> (which was funded by the government as anti-alien propaganda). The door slides open, and after a pregnant pause, you step into the base. You glance around the structure and feel your face forming a goofy grin. 
+            <p>You see Zack Lightman's parents; his insanely hot mom is covering her mouth with her very long fingers as she chuckles at a joke from her husband. You entered in the middle of the conversation, but you heard the punchline, "You're welcome." The two Mikes are in the corner watching Brady Bunch reruns. Lex is using a QComm, probably hacking but there's no way to know for sure. Major Graham Fogg and Major Shin are playing a song from the Raid the Arcade mixtape on their musical instruments to the delight of Atomic Mom, Wodie, Crazy G, and Milo.
+            
+            <div class="choices">
+                <button class="choice" data-choice="1" data-result="item">Look for food</button>
+                <button class="choice" data-choice="2" data-result="key">Listen to the concert</button>
+                <button class="choice" data-choice="3" data-result="lose">Set course...for romance!</button>
+            </div>
+            <div class="results">
+                <div class="result-1 hidden">
+                    <p>You know the military laid in a bunch of food somewhere on the base and go searching for it. After a minute, you find the pantry and enter the pantry.
+                    <p>As you pass your eyes over the crates of junk food, you hear someone chuckle and turn. General Lightman says, "Care for some snackage? You're a Lucky Charms man, aren't you? Dry with no—" "I actually prefer Count Chocula," you interrupt. The general's face turns red with genuine embarassment. He scowls, gives a sarcastic two thumbs up, turns, and marches out of the room.
+                    <p>You mutter, "Loser sewage worker,", then turn back to the crates. As you do, you spot a miniature replica of a Glaive fighter. You yell, "Glaive!"
+                    <p class="result-points">Gain 10 points!
+                    <button class="next">Go to Planet Argon</button>
+                </div>
+                <div class="result-2 hidden">
+                    <p>You start walking toward (band name, on page 289) when The Emissary appears out of nowhere. The many-sided shape (either an icosohedron or a dodecahedron) quickly explained the history of the video game industry, how it was secretly funded by the Europeans, and how it would lead to the complete happiness of the human race. (Fun fact: the voice was the voice of Ioan Gruffud, the Welsh actor who starred as Mr. Fantastic in the 2005 film <i>Fantastic Four</i>.) With a moonquake and the sound, "la loo la bah bah", it instantly disappears.
+                    <p>You stop your head from nodding and look down at your hand. The Emissary has given you the key.
+                    <p class="result-points">Gain the Yoda Kush Key!
+                    <button class="next">Go to Planet Argon</button>
+                </div>
+                <div class="result-3 hidden">
+                    <p>hatch, hawking tyson, 
+                    <p class="result-points">Lose 1 life point!
+                    <button class="next">Go to Planet Argon</button>
+                </div>
+            </div>
         </div>
 
+<!--  
+Battle crys: Cry havoc, let's do dis
+Like [movie reference] 
+"Looked like exactly what it was"
+Neil degrasse Tyson and Stephen hawking
+A cheer slowly built
+Rig-ception
+As it came to be known 
+
+Memorizing things
+Movie reference
+Seemed to happen
+Named high school gym after him
+End with paraphrase plus adding to a yoda quote
+
+Very good corner of the eye vision
+Like [movie reference] 
+Mechs power leaping and power jumping 
+It was almost as if I [did action], which of course I just did
+Like an avalanche, or godzilla 
+Major shin bowing, holy Toledo
+D&D supplements 
+Rigs 
+Trek and Wars franchises 
+I nodded, not in agreement, but to show I understood the reference. 
+Cardinal sin is not liking sci-fi 
+Yoda kush video game weed
+1h00m00s
+Face contorted into a mask of pain
+Hard line internet, nodes
+I screamed. I don't know for how long. 
+ -->
+
+
         <div id="screen-eye-of-argon" class="screen hidden">
-            eye of argon
+            <h1>Eye of Argon</h1>
+            <p>
+            <div class="choices">
+                <button class="choice" data-choice="1" data-result="key"></button>
+                <button class="choice" data-choice="2" data-result="item"></button>
+                <button class="choice" data-choice="3" data-result="lose"></button>
+            </div>
+            <div class="results">
+                <div class="result-1 hidden">
+                    <p>
+                    <p class="result-points">Gain the  Key!
+                    <button class="next">Go to Planet </button>
+                </div>
+                <div class="result-2 hidden">
+                    <p>
+                    <p class="result-points">Gain 10 points!
+                    <button class="next">Go to Planet </button>
+                </div>
+                <div class="result-3 hidden">
+                    <p>
+                    <p class="result-points">Lose 1 life point!
+                    <button class="next">Go to Planet </button>
+                </div>
+            </div>
         </div>
 
         <div id="screen-tekwar" class="screen hidden">
@@ -149,6 +245,12 @@
 
         <div id="screen-trucking-through-time" class="screen hidden">
             trucking through time
+        </div>
+
+        <div id="screen-final" class="screen hidden">
+            You point your blaster at Wade Watts and press the trigger. What can only be described as the opposite of a grin spread over his face. "I guess I should have joined over chat link," he whispered as he died.
+
+            You point your blaster at Zack Lightman and press the trigger.
         </div>
 
         <div id="screen-dead" class="screen hidden">
