@@ -60,3 +60,7 @@ h2 {
 .hidden {
     display: none;
 }
+
+.results > div::before {
+    content: '***';
+}
