@@ -44,6 +44,10 @@ h2 {
     font-size: 22px;
 }
 
+button {
+    display: block;
+}
+
 .title {
     font-size: 60px;
 }
