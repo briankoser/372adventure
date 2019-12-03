@@ -9,13 +9,24 @@
     <meta name="description" content="A story game for the fans of the 372 Pages We'll Never Get Back podcast">
     
     <style>
+        @font-face {
+            font-family: GoudyBookletter1911;
+            src:
+                local("Goudy Bookletter 1911"),
+                url("https://s3.amazonaws.com/fonts.koser.us/GoudyBookletter1911.woff2") format("woff2"), 
+                url("https://s3.amazonaws.com/fonts.koser.us/GoudyBookletter1911.woff") format("woff"); 
+        }
+
+
+
         body { 
             margin: 0;
         }
 
         body, 
         button {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-family: GoudyBookletter1911, Georgia, sans-serif; 
+            {# font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; #}
             font-size: 20px;
             line-height: 1.4;
             margin-bottom: 20px;
