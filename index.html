@@ -524,19 +524,13 @@
                 <p>The third mongoose is enormous and is wearing a collar with a long leash attached.
 
                 <div class="choices">
-                    <button class="js-choice" data-result="key">Choose the black mongoose</button>
-                    <button class="js-choice" data-result="item">Choose the white mongoose</button>
+                    <button class="js-choice" data-result="item">Choose the black mongoose</button>
+                    <button class="js-choice" data-result="key">Choose the white mongoose</button>
                     <button class="js-choice" data-result="lose">Choose the enormous mongoose</button>
                 </div>
 
                 <div class="results">
                     <div class="result result-key hidden">
-                        <p>You carry off the black mongoose in its box. Walking briskly, you crack open the box and find the creature staring at you with black, piercing eyes that are partly hypnotic, partly mesmeric. Oblivious to your surroundings, you slam into a well-hung door and fall to the ground unconscious.
-                        <p>You awake in a bed, feeling like a hound's eye at rest. You suffered quite the head injury; it would have cost some—probably all—their lives in the Southern States of America. But to soften the blow, it appears that some well-wishers have left you with gifts: an earthen teapot, a slop basin, and a tank of fish born to destroy, to wound, to torture.
-                        <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet </button>
-                    </div>
-                    <div class="result result-item hidden">
                         <p>You carry off the white mongoose, thinking of nothing but worm taxonomy and the well-known legends of the Worm of Lambton and the Laidly Worm of Spindleston Heugh.
                         <p>As you hurry down the path through vast fens and quags, you hear snake charmer music coming out of a deep hole.
                         <p>You whisper to yourself, "I'm no Obi-man, but I know deep holes mean giant snakes." You edge to the edge of the hole and look down.
@@ -545,6 +539,12 @@
                         <p>You pour the sand down the hole; it trickles down the zone of slipperiness onto the Worm. You keep pouring until the only remaining sign of the antidiluvian monster is a dim green light.
                         <p>Physically "dog tired", you decide you had better go to bed. Under your pillow you find a key.
                         <p class="result-points">Gain the Key of Spindleston Heugh!
+                        <button class="next js-next">Go to Planet </button>
+                    </div>
+                    <div class="result result-item hidden">
+                        <p>You carry off the black mongoose in its box. Walking briskly, you crack open the box and find the creature staring at you with black, piercing eyes that are partly hypnotic, partly mesmeric. Oblivious to your surroundings, you slam into a well-hung door and fall to the ground unconscious.
+                        <p>You awake in a bed, feeling like a hound's eye at rest. You suffered quite the head injury; it would have cost some—probably all—their lives in the Southern States of America. But to soften the blow, it appears that some well-wishers have left you with gifts: an earthen teapot, a slop basin, and a tank of fish born to destroy, to wound, to torture.
+                        <p class="result-points">Gain 10 points!
                         <button class="next js-next">Go to Planet </button>
                     </div>
                     <div class="result result-lose hidden">
@@ -595,6 +595,7 @@
                 <p>Chad and Dale are checking the backs of the menus.
                 <p>Sir Nathaniel is talking to Wade and Zack about worm metabolism, and being ignored.
                 <p>Thorn Drumheller
+                <p id="no-keys hidden">
                 <p id="bullets-text">
                 <div id="shots">
                     <h2 id="instructions"></h2>
@@ -683,6 +684,27 @@
                 <p>Game over. You go back to level 1 and lose all your items.
                 <p><button class="js-reset">Play again</button>
             </div>
+
+            <template id="bullets-0">
+                <p>You stand frozen for 20 seconds. Without any keys, there's no way to win this game. Turning to leave, you stop. 
+                <p>You were transported here. 
+                <p>And there is no door.
+                <p>You notice a print of Titian's <i>Sisyphus</i> hanging on the far wall. You're trapped in this purgatory...for how long?
+                <p>Titus Uno approaches and puts an arm around your shoulders. "I, Titus Uno, Certified Public Accountant, Forensic Certified Public Accountant, and Global Chartered Management Accountant, have someone that I want you to meet. He has some very interesting ideas to share," he says as he steers you toward a now-alert Bob Honey.
+                <p>"Gather around, everyone," says Titus Uno, Certified Public Accountant, Forensic Certified Public Accountant, Global Chartered Management Accountant, and your jailer, "Bob is going to read his new poem for us."
+                <p>Not purgatory.
+                <p>Hell.
+            </template>
+
+            <template id="bullets-1">
+                <p>You stand frozen for 20 seconds, then reach into your pocket and pull out the key. 
+                <p>"Oh! Kalla!" The key starts glowing, then reshapes into a cylinder roughly the size of an average cockroach. You stare at it for a minute, then move your hand to your hip and unholster your blaster pistol, an exact replica of the BlasTech DL-44 carried by Han Solo in the classic '80s film franchise Star Wars. You deftly insert the cartridge into the chamber and raise the blaster, pointing it briefly at each other person in the room.
+            </template>
+
+            <template id="bullets-multiple">
+                <p>You stand frozen for 20 seconds, then reach into your pocket and pull out the keys. 
+                <p>"Oh! Kalla!" The keys start glowing, then reshape into cylinders roughly the size of an average cockroach. You stare at them for a minute, then move your hand to your hip and unholster your blaster pistol, an exact replica of the BlasTech DL-44 carried by Han Solo in the classic '80s film franchise Star Wars. You deftly insert the cartridges into the chamber and raise the blaster, pointing it briefly at each other person in the room.
+            </template>
         </article>
 
         <article id="view-about" class="view hidden">
@@ -809,7 +831,7 @@
             };
 
             let displayEndings = (state) => {
-                if (state.keys === state.characters.bob.shots && state.keys >= 5) {
+                if (state.keys === state.characters.bob.shots && state.keys >= 6) {
                     console.log('Get special ending by shooting Bob Honey with all shots (and meeting minimum number of shots)')
                     show(document.getElementById('result-bob-all'));
                     hideAll(document.querySelectorAll('.hint'));
@@ -828,6 +850,11 @@
                 show(resultTab);
             };
 
+            let displayScore = (state) => {
+                let scoreMessage = `${calculateScore(state)} points`;
+                document.getElementById('final-score').innerHTML = scoreMessage;
+            };
+
             let findScreenByElement = (element) => {
                 let parent = element.parentElement;
                 
@@ -841,8 +868,14 @@
                 return parent;
             };
 
-            let generateBulletsText = (isSingle) => {
-                return `You stand frozen for 20 seconds, then reach into your pocket and pull out the ${isSingle ? 'key' : 'keys'}. "Oh! Kalla!" The ${isSingle ? 'key starts' : 'keys start'} glowing, then ${isSingle ? 'reshapes' : 'reshape'} into ${isSingle ? 'a cylinder' : 'cylinders'} roughly the size of an average cockroach. You stare at ${isSingle ? 'it' : 'them'} for a minute, then move your hand to your hip and unholster your blaster pistol, an exact replica of the BlasTech DL-44 carried by Han Solo in the classic '80s film franchise Star Wars. You deftly insert the ${isSingle ? 'cartridge' : 'cartridges'} into the chamber and raise the blaster, pointing it briefly at each other person in the room.`;
+            let getBulletsText = (keys) => {
+                if (keys === 0) {
+                    return document.getElementById('bullets-0').content;
+                } else if (keys === 1) {
+                    return document.getElementById('bullets-1').content;
+                } else {
+                    return document.getElementById('bullets-multiple').content;
+                }
             };
 
             let generateInstructions = (number) => {
@@ -903,15 +936,16 @@
 
             let prepareFinalScreen = (button) => {
                 button.addEventListener('click', (clickEvent) => {
-                    let hasOneKey = state.keys === 1;
-                    let bulletsText = generateBulletsText(hasOneKey);
+                    let bulletsText = getBulletsText(state.keys);
+                    document.getElementById('bullets-text').appendChild(bulletsText);
                     console.log(`Bullets text: ${bulletsText}`);
-                    document.getElementById('bullets-text').innerHTML = bulletsText;
-                    let initialInstructionBullet = hasOneKey ? undefined : 1; // if there's only one bullet, display 'fire bullet'; if more, display 'fire first bullet'
-                    document.getElementById('instructions').innerHTML = generateInstructions(initialInstructionBullet);
-                    show(document.getElementById(randomHint()));
 
-                    // todo: handle 0 keys
+                    if (state.keys === 0) {
+                        displayScore(state);
+                    } else {
+                        document.getElementById('instructions').innerHTML = generateInstructions(state.keys === 1 ? undefined : 1); // if there's only one bullet, display 'fire bullet'; if more, display 'fire first bullet'
+                        show(document.getElementById(randomHint()));
+                    }
                 });
             };
 
@@ -931,8 +965,7 @@
                         show(document.getElementById('final-results'));
 
                         displayEndings(state);
-                        let scoreMessage = `${calculateScore(state)} points`;
-                        document.getElementById('final-score').innerHTML = scoreMessage;
+                        displayScore(state);
                     } else {
                         document.getElementById('instructions').innerHTML = generateInstructions(state.shotsTaken + 1);
                     }
