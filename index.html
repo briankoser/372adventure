@@ -9,13 +9,22 @@
     <meta name="description" content="A story game for the fans of the 372 Pages We'll Never Get Back podcast">
     
     <style>
+        @font-face {
+            font-family: AliceQuestion;
+            src:
+                url("alice-question.woff2") format("woff2"), 
+                url("alice-question.woff") format("woff"); 
+        }
+
+
+
         body { 
             margin: 0;
         }
 
         body, 
         button {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-family: AliceQuestion, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
             font-size: 20px;
             line-height: 1.4;
             margin-bottom: 20px;
@@ -145,6 +154,7 @@
                 <p>I read every book on crows and every book on mockingbirds that my local library had on its shelves.
                 <p>I obtained a copy of <i>Animal Crackups</i> and watched it every night before falling asleep.
                 <p>I knew that Conor had appeared on Jeopardy, so I watched all 57 seasons of the show.
+                <p>I memorized every cool, funny, and fun fact on factsking.com.
                 <p>I watched every 372 Pages documentary.
                 <p>I even listened to all of the side projects.
                 <p>The grin remained spread across my face like The Joker in the classic 1989 film <i>Batman</i>, played by Jack Nicholson. I switched my microphone on and said, "N3lson, you ready for this?"
@@ -402,7 +412,7 @@
                         <p>Drew Samson listens to all of the 64-SQUARES bugs and hears that the international jewel thief and motivational calendar writer, Ruby Tuesday, may have information about the "Lucky" Dixon Ticonderoga pencil. Ruby Tuesday will be in court the same day as Clef Treble, who is guilty of terrorism of a building, in this "case", the 64-SQUARES skyscraper, and guilty of terrorism against the whole world. Well, well, well.
                         <p>Ruby Tuesday is waiting in line for her turn while Clef Treble is on trial. Judge Moses Gavel is sick today, so his brother, Judge Aaron Gavel, who also went to judge school, is in charge. He will decide if 64-SQUARES can rebuild their skyscraper.
                         <p>Judge Aaron Gavel bangs his hammer-thing for order, order in the court. You are sitting in the court next to Drew Samson, Chuck Mac, "Spider" Webb, "Davy" Bond, "Super" Vision, and Quick Swift.
-                        <p>Judge Aaron Gavel asks Clef Treble to swear to make no material misstatements on a stack of Bibles. Instead, Clef Treble pushes the stack of Bibles over and pulls a gun out of his pocket! Before he can threaten the court, Clef Treble receives a bullet wound in his right shoulder. Clef Treble falls to the ground, spurting blood from his shoulder wound and vomiting blood from his internal bleeding.
+                        <p>Judge Aaron Gavel asks Clef Treble to swear to make no "material misstatements" on a stack of Bibles. Instead, Clef Treble pushes the stack of Bibles over and pulls a gun out of his pocket! Before he can threaten the court, Clef Treble receives a bullet wound in his right shoulder. Clef Treble falls to the ground, spurting blood from his shoulder wound and vomiting blood from his internal bleeding.
                         <p>You turn and see Quick Swift standing up with a smoking gun in his hand. "Quick is not short for Quicken or Quickbooks," says Quick Swift. "It is short for Quickdraw."
                         <p>That is cool. That is so realistic.
                         <p>But while the court was distracted, Ruby Tuesday vanished without a trace. The trail of the "Lucky" Dixon Ticonderoga pencil is cold.
@@ -445,36 +455,37 @@
 
             <div id="screen-the-mister" class="screen hidden">
                 <h1>The Mister</h1>
-                <p>You land your ship on Planet Albania next to the 
+                <p>You land your ship on Planet Albania next to Trevelyan House. 
+                <p>You enter reluctantly.
+                <p>You can at least avoid the bedroom.
 
                 <div class="choices">
-                    <button class="js-choice" data-result="key">Aleesia</button>
-                    <button class="js-choice" data-result="item">Caroline</button>
-                    <button class="js-choice" data-result="lose">Vaccu</button>
+                    <button class="js-choice" data-result="key">Explore the ballroom</button>
+                    <button class="js-choice" data-result="item">Explore the kitchen</button>
+                    <button class="js-choice" data-result="lose">Explore the foyer closet</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
-                        <p>Aleesia
-Piano
-housecoat
-zot
-no socks in Albania, no seatbelts in Albania, Women don't walk down the street, albanians nod for no and shake head for yes
-alesia lives for the piano, "The business end" the keys on the piano
-biting top lip, Playing with hair, Grabbing biceps, Grabbing his hair
-Maxim is her favorite composer
-In the trunk
-I wonder if he likes me
-The sea, the sea!
-The sea was rough. Too rough.
-alesia is shy
-                        <p class="result-points">Gain the  Key!
+                        <p>You enter the ballroom and find Alessia in a housecoat, standing at the business end of the piano.
+                        <p>She looks up at you shyly, biting her top lip and playing with her hair.
+                        <p>"Zot! I—I was just dusting the piano, not examining a score by my favorite composer, Maxim."
+                        <p>"Okay...hey, have you come across any keys while you were cleaning?"
+                        <p>Alessia shakes her head "no", but she's Albanian so it means "yes".
+                        <p>"I found this while I was in the trunk earlier."
+                        <p>She drops a key into your hand, then grabs your bicep.
+                        <p>"I need to get back to my ship."
+                        <p>You run out of the room, leaving Alessia to her thoughts.
+                        <p><i>I saw a ship once. On the sea, the sea!</i>
+                        <p><i>I hope he will be safe. The sea is rough. Too rough.</i>
+                        <p><i>Does he like me? Could a man like that love a sack, made to endure?</i>
+                        <p class="result-points">Gain the Lord Trevethick Key!
                         <button class="next js-next">Go to Planet Wyoming Territory</button>
                     </div>
                     <div class="result result-item hidden">
                         <p>Caroline: Bitter, hisses, contempt, god she's so annoying, screeches, horrified, spit out every word
 Caroline has lipstick on her teeth so we can remove the Bob Honey character
 Kitchen
-Karo Nut Pie
+Caro Nut Pie
 Bannoffee
 Prune Stew 
 mcdonald's food is enticing
@@ -487,7 +498,7 @@ Jameson alcohol
                         <p>Vacuum
 Halberd
 1:39:00 smiley vacuum Henry Hoover
-factsking.com
+
 What look like pikes (when you click on this option, you lose a life point because they're actually halberds)
                         <p class="result-points">Lose 1 life point!
                         <button class="next js-next">Go to Planet Wyoming Territory</button>
@@ -500,13 +511,11 @@ repeat word three times ("cold cold cold")
 mpd italicized thoughts questions on new lines
 
 Statue of a boy with a dolphin
-A woman is a sack, made to endure. 
 Aleesia's father 
 Tom is a drunk
 
 "still small voice"
 "big time"
-piano in a Donald duck costume
 "how Apt"
 Heat seeping into body from her
 A terrible fright
@@ -713,6 +722,7 @@ Fencing
                 <div id="result-maxim" class="result hidden">
                     <p>You point your blaster at Maxim and press the trigger.
                     <p>Lord/DJ/composer/photographer
+                     lord-cum-DJ-cum-composer-cum-photographer-cum-model
 I hope to God that my bank balance is bigger than his. (her betrothed)
 S&*# s*#@ s*&#
 Crack one eye open when waking up
