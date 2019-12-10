@@ -160,8 +160,8 @@
                 <p>The grin remained spread across my face like The Joker in the classic 1989 film <i>Batman</i>, played by Jack Nicholson. I switched my microphone on and said, "N3lson, you ready for this?"
                 <p>A voice seemed to crackle over my headset. "Lord N3lson to you, crapburger!"
                 <p>I shook my head, still grinning. I had never met N3lson in real life, but I instinctively knew he looked exactly like his Oasis avatar. "That was completely uncalled for, lamer. And I will expect the same courtesy."
-                <p>N3lson laughed. "Alright, Odgen. You get Goat Roper, and I'll notify Biscuit Head and Pie Face. Ready the Jackals! Let's do this!"
-                <p>We called ourselves The Four Score because there were originally four of us, and we like to collect high scores in all our games. We also called ourselves The Jackals.
+                <p>N3lson laughed. "Alright, Odgen. I'll message BaconSnake72 and you get PiFace. Ready the Jackals! Let's do dis!"
+                <p>We called ourselves The Four Score because there were four of us, and we liked to collect high scores in all our games. We also called ourselves The Jackals.
                 <p>"It is on," I whispered. "It is on like Red Dawn."
                 <p><button class="next js-next">Go to Planet OASIS</button>
             </div>
@@ -602,22 +602,22 @@ Detailed sandwich description
 Tumbled to
 
                 <h2>Chapter 1</h2>
-                <p>You are cantering your horse, {horseName}, down the road toward the city of {location1}. On the side of the road, you spot a small {race}, a rarity in these parts.
-                <p>"Ho!" he hails you, waving his arm with asperity. "Good sir, could yer take a poor {race} as fer as {location2}? It's a mere league down de road, but I aspire to avoid the Mad Dogs and their gobbling snarls." The {race} folk are a small people, basically {animal} men, with furry {bodyParts}.
-                <p>You nod assent and the little {race} swings up onto your steed with the same disconcertingly boneless grace as a swan. "I am {person}."
+                <p>You are cantering your horse, {horse}, down the road toward the city of {location1}. On the side of the road, you spot a small {race}, a rarity in these parts.
+                <p>"Ho!" he hails you, waving his arm with asperity. "Good sir, could yer take a poor {race} as fer as {location2}? It's a mere league down ze road, but I aspire to avoid the Mad Dogs and their gobbling snarls." The {race} folk are a small people, basically {animal} men, with furry {bodyParts}.
+                <p>You give him a tigerish smile and the little {race} swings up onto your steed with the same disconcertingly boneless grace as a swan. "I am {person}," the {race} says in introduction.
                 <p>Starting again, your horse picks up the pace with celerity. You come to the {location3} River, but are able to cross with minimal difficulty due to all the silting.
                 <p>You come to {location2} and the {race} springs off your horse, making the sound of {animalNoise1} crossed with {animalNoise2}, a call made by all {race} in times of distress, boredom, or—in this case—mirth.
-                <p>"Thank 'ee kindly," {person} offers. "You more 'n likely saved my life, and thas a fack," he says with verity. The {race} tosses you a gewgaw, the common payment for a brief jaunt, and brings your debts into parity.
-                <p>You leave {location2} on the path once more to {location1}. Suddenly, from a grove of trees near the road, a magus on a llamacorn bounds out. He casts a minor glamor!
+                <p>"Thank 'ee kindly," {person} offers. "You more 'n likely saved my life, and thas a fack," he says with verity. The {race} tosses you a gewgaw, the common payment for a brief jaunt, and brings your balance sheets into parity.
+                <p>You leave {location2} on the path once more to {location1}. Suddenly, you tumble to a magus on a llamacorn. She bounds toward you and casts a minor glamor!
                 <div class="choices">
-                    <button class="js-choice" data-result="key"></button>
-                    <button class="js-choice" data-result="item"></button>
-                    <button class="js-choice" data-result="lose"></button>
+                    <button class="js-choice" data-result="item">Counter with a minor charm</button>
+                    <button class="js-choice" data-result="key">Counter with a minor enchantment</button>
+                    <button class="js-choice" data-result="lose">Counter with a minor spell</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
-                        <p>
-                        <p class="result-points">Gain the  Key!
+                        <p>"Don't try it, magus! I have the high ground!" you yell. Your minor enchantment reflects the minor charm back to the magus and turns her into a key.
+                        <p class="result-points">Gain the Nelwyn Key!
                         <button class="next js-next js-final">Go to the final level</button>
                     </div>
                     <div class="result result-item hidden">
@@ -626,7 +626,7 @@ Tumbled to
                         <button class="next js-next js-final">Go to the final level</button>
                     </div>
                     <div class="result result-lose hidden">
-                        <p>
+                        <p>"I have a bad feeling about this," you say to your equine companion. The minor glamor passes through your minor spell, creating streamers of raw flame which coruscate over an acorn.
                         <p class="result-points">Lose 1 life point!
                         <button class="next js-next js-final">Go to the final level</button>
                     </div>
@@ -634,6 +634,14 @@ Tumbled to
             </div>
 
 <!-- Star Wars quote 
+I find your lack of faith disturbing.
+No. Or do not. There is no try.
+No. I am your father
+Don't try it Anakin. I have the high ground.
+I have a bad feeling about this.
+Look up star wars memes
+
+
 The eagle attacked like a falcon
 
 The Vale
@@ -677,8 +685,8 @@ Witchy boy
 Cascani foster wyr children and vice versa 
 Incomprehensible action and back storey
 Occluded
-Streamers of raw flame
 Six commas and 2 em dashes in one sentence
+Streamers of raw flame
 Energies coruscating over an acorn
 
 Angwyn
@@ -852,9 +860,15 @@ I have to go, said Willow. -->
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             /* CONSTANTS */
-            const FIRST_NAMES = ['Twig', 'Oat', 'Branch', 'Stem', 'Elm', 'Walnut', 'Almond', 'Peck', 'Bark', 'Apple', 'Stick', 'Moss', 'Cork', 'Calmcartigan', 'Proudpartigan', 'Sadsartigan', 'Shatlart', 'Penalon', 'Mrifk'];
-            const LAST_NAMES = ['Bongohecker', 'Harphecker', 'Hornhecker', 'Pipehecker', 'Bellhecker', 'Fifehecker', 'Flutehecker', 'Saxhecker', 'Sackbut', 'Ufwell', 'Magesighter', 'Bearbuilder', 'Tiompan', 'Muffinsmasher'];
-            const SIGHTS = ['MageSight', 'InSight', 'OutSight', 'mind speak', 'WizardSense', 'mind sight', 'AboveSight'];
+            const ANIMALS = ['aardvark', 'ape', 'capybara', 'crab', 'fruit bat', 'manatee', 'opossum', 'platypus', 'rodent', 'seal', 'shrimp', 'sloth'];
+            const ANIMAL_NOISES = ['alligator bellows', 'ape howls', 'badger growls', 'chimpanzee screams', 'duck quacks', 'giraffe bleats', 'goose honks', 'moose bellows', 'rodent squeaks', 'turkey gobbles'];
+            const BODY_PARTS = ['ears', 'feet', 'fingers', 'lips', 'navels', 'necks', 'thighs'];
+            const FIRST_NAMES = ['Almond', 'Apple', 'Bark', 'Branch', 'Calmcartigan', 'Cork', 'Elm', 'Iyck', 'Moss', 'Mrifk', 'Oat', 'Peck', 'Penalon', 'Proudpartigan', 'Sadsartigan', 'Shatlart', 'Stem', 'Stick', 'Twig', 'Walnut'];
+            const HORSE_NAMES = ['Biscuit Head', 'Goat Roper', 'Harry Trotter', 'Ogden Sires', 'Sheriff Tack Starr', 'Veronica Flaxon', 'Wade Trots'];
+            const LAST_NAMES = ['Bearbuilder', 'Bellhecker', 'Bongohecker', 'Bronzedhide', 'Fifehecker', 'Flutehecker', 'Harphecker', 'Hornhecker', 'Magesighter', 'Muffinsmasher', 'Pipehecker', 'Sackbut', 'Saxhecker', 'Tiompan', 'Ufwell'];
+            const LOCATIONS = ['Ashchester', 'Balaham Hills', 'Balatun Moors', 'Belasmere', 'Blingenham Mountain', 'Dimknot Down', 'Dorbury', 'Doshbourne', 'Dukeshouse Lake', 'Duncaster', 'Dungsdump', 'Meadwood', 'Middleshutt', 'Mynyddlock', 'Nancaster', 'Somerbeck', 'Swinington', 'Vilefast', 'Warmford'];
+            const RACES = ['Balalock', 'Balcote', 'Frid', 'Hutt', 'Mormer', 'Polan', 'Wobbit', 'Yobbit'];
+            const SIGHTS = ['AboveSight', 'InSight', 'MageSight', 'OutSight', 'WizardSense', 'mind sight', 'mind speak'];
 
 
             
