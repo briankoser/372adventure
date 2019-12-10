@@ -820,8 +820,8 @@ I have to go, said Willow. -->
                     <p>Jake, aka Jonathan, aka Juanito, aka The Android lies still. "I'm not certain that you haven't decided I'm not as crooked as everyone else thinks I am," he whispers.
                     <p>Then he dies.
                     <p>"MESS. YOU MADE A MESS." Jake removes his Tek headset as a chill metal hand slides under his buttocks.
-                    <p>"How long was I in," he muses out loud to himself. "Certainly long enough to take advantage of the several discreet openings."
-                    <p>"STILL," says the chrome-covered cleaning bot, "THAT'S ONE HELLUVA RIG."
+                    <p>"How long was I in," he muses out loud to himself. "Long enough to take advantage, certainly, of the several discreet openings."
+                    <p>"STILL," says the chrome-covered cleaning bot, "IT'S ONE HELLUVA RIG."
                 </div>
                 <div id="result-titus" class="result story hidden">
                     <p>You point your blaster at Titus Uno. Titus Uno opens his mouth.
@@ -911,7 +911,10 @@ I have to go, said Willow. -->
         </article>
 
         <article id="view-about" class="view hidden">
+            <h1>About</h1>
             <p>To celebrate the <a href="http://372pages.com/">372 Pages We'll Never Get back</a> podcast finishing their 10th book, I present this 372 Pages fan-fiction role-playing game. It seemed fitting to write a story by ripping off other stories and filling up on references.
+            <p id="word-count"></p>
+
             <h1>Thanks</h1>
             <p>Thanks Conor and Mike for the 2,689 pages we'll never get back. It's become one of our favorite bits of media to consume together.
             <p>Thanks to the <a href="http://tableflipsyou.com">Flip the Table podcast</a>; I borrowed the souped-up "Choose Your Own Adventure"-format from one of their recurring games. Aptly, Flip the Table was inspired in part by Mystery Science Theatre 3000. (The hosts riff on cheesy, weird, and obscure board games, then conclude with a game show. The podcast has ended, but I highly recommend listening through the archive; start with <a href="https://tableflipsyou.blogspot.com/2012/10/episode-13-gone-birding.html">Gone Birding!</a> or <a href="https://tableflipsyou.blogspot.com/2014/02/episode-48-mcdonalds-game.html">The McDonald's Game</a>.)
@@ -919,347 +922,367 @@ I have to go, said Willow. -->
             <p>Thanks to Ben De Bono of <a href="http://thescifichristian.com">The Sci-Fi Christian</a>, who turned us on to 372 Pages in the <i>Ready Player One</i> days.
             <p>Thanks to Roux for the <a href="http://rouxscodingcomic.thecomicseries.com/shadowmoonnamegenerator/">Shadow Moon name generator</a>.
             <p>And to Conor again, who <a href="http://372pages.com/episodes/372pages_008.mp3#t=01:19:47">once said</a>, <q>There's value in creating something that is more than just reciting things that came before it, or telling people what you like.</q>... ¯\_(ツ)_/¯
+            
             <h1>Author</h1>
             <p><img src="author.jpg" alt="Portrait of the author">Brian Koser is a <a href="https://github.com/briankoser">computer programmer</a>, a <a href="https://www.goodreads.com/user/show/4812558-brian-koser">reader</a>, and a <a href="https://tto.koser.us">podcaster</a>. Brian Koser is a little proud that he has <a href="https://www.goodreads.com/review/show/2883909057">the highest-rated review of <i>Trucking through Time</i> on Goodreads</a>. Brian Koser is a little less proud that his review of <i>Trucking through Time</i> on Goodreads is the most popular book review that he has written on Goodreads. Brian Koser has a wife Melissa Koser. Melissa Koser is also a podcaster and a reader. Melissa Koser likes to visit Brian Koser at the office. Brian Koser and Melissa Koser met in the college library. On the day they met they were reading books at the same table. They stayed at the table for a whole hour. Brian said to Melissa, we could read a book together forever. Melissa said, of course I will marry you Brian Koser. Brian Koser and Melissa Koser have three good daughters: Lydia Koser, Amber Koser, and Penelope Koser. Lydia Koser, Amber Koser, and Penelope Koser are also good sisters. They enjoy doing the activities together.</p>
         </article>
+        <template id="word-count-template"><p>372 Adventure is {wordCount} words long, or about {percentOfArgon}% of The Eye of Argon.</template>
     </main>
     <footer>
         
     </footer>
 
     <script>
+        /* CONSTANTS */
+        const ANIMALS = ['aardvark', 'ape', 'capybara', 'crab', 'fruit bat', 'manatee', 'opossum', 'platypus', 'rodent', 'seal', 'shrimp', 'sloth'];
+        const ANIMAL_NOISES = ['alligator bellows', 'ape howls', 'badger growls', 'chimpanzee screams', 'duck quacks', 'giraffe bleats', 'goose honks', 'moose bellows', 'rodent squeaks', 'turkey gobbles'];
+        const BODY_PARTS = ['ears', 'feet', 'fingers', 'lips', 'navels', 'necks', 'thighs'];
+        const FIRST_NAMES = ['Almond', 'Apple', 'Bark', 'Branch', 'Calmcartigan', 'Cork', 'Elm', 'Iyck', 'Moss', 'Mrifk', 'Oat', 'Peck', 'Penalon', 'Proudpartigan', 'Sadsartigan', 'Shatlart', 'Stem', 'Stick', 'Twig', 'Walnut'];
+        const HORSE_NAMES = ['Biscuit Head', 'Goat Roper', 'Harry Trotter', 'Ogden Sires', 'Sheriff Tack Starr', 'Veronica Flaxon', 'Wade Trots'];
+        const LAST_NAMES = ['Bearbuilder', 'Bellhecker', 'Bongohecker', 'Bronzedhide', 'Fifehecker', 'Flutehecker', 'Harphecker', 'Hornhecker', 'Magesighter', 'Muffinsmasher', 'Pipehecker', 'Sackbut', 'Saxhecker', 'Tiompan', 'Ufwell'];
+        const LOCATIONS = ['Ashchester', 'Balaham Hills', 'Balatun Moors', 'Belasmere', 'Blingenham Mountain', 'Dimknot Down', 'Dorbury', 'Doshbourne', 'Dukeshouse Lake', 'Duncaster', 'Dungsdump', 'Meadwood', 'Middleshutt', 'Mynyddlock', 'Nancaster', 'Somerbeck', 'Swinington', 'Vilefast', 'Warmford'];
+        const RACES = ['Balalock', 'Balcote', 'Frid', 'Hutt', 'Mormer', 'Polan', 'Wobbit', 'Yobbit'];
+        const SIGHTS = ['AboveSight', 'InSight', 'MageSight', 'MageSpeak', 'MindSpeak', 'OutSight', 'OutSpeak', 'WizardSense', 'mind sight'];
+
+        const EYE_OF_ARGON_WORD_COUNT = 11378;
+
         
-            /* CONSTANTS */
-            const ANIMALS = ['aardvark', 'ape', 'capybara', 'crab', 'fruit bat', 'manatee', 'opossum', 'platypus', 'rodent', 'seal', 'shrimp', 'sloth'];
-            const ANIMAL_NOISES = ['alligator bellows', 'ape howls', 'badger growls', 'chimpanzee screams', 'duck quacks', 'giraffe bleats', 'goose honks', 'moose bellows', 'rodent squeaks', 'turkey gobbles'];
-            const BODY_PARTS = ['ears', 'feet', 'fingers', 'lips', 'navels', 'necks', 'thighs'];
-            const FIRST_NAMES = ['Almond', 'Apple', 'Bark', 'Branch', 'Calmcartigan', 'Cork', 'Elm', 'Iyck', 'Moss', 'Mrifk', 'Oat', 'Peck', 'Penalon', 'Proudpartigan', 'Sadsartigan', 'Shatlart', 'Stem', 'Stick', 'Twig', 'Walnut'];
-            const HORSE_NAMES = ['Biscuit Head', 'Goat Roper', 'Harry Trotter', 'Ogden Sires', 'Sheriff Tack Starr', 'Veronica Flaxon', 'Wade Trots'];
-            const LAST_NAMES = ['Bearbuilder', 'Bellhecker', 'Bongohecker', 'Bronzedhide', 'Fifehecker', 'Flutehecker', 'Harphecker', 'Hornhecker', 'Magesighter', 'Muffinsmasher', 'Pipehecker', 'Sackbut', 'Saxhecker', 'Tiompan', 'Ufwell'];
-            const LOCATIONS = ['Ashchester', 'Balaham Hills', 'Balatun Moors', 'Belasmere', 'Blingenham Mountain', 'Dimknot Down', 'Dorbury', 'Doshbourne', 'Dukeshouse Lake', 'Duncaster', 'Dungsdump', 'Meadwood', 'Middleshutt', 'Mynyddlock', 'Nancaster', 'Somerbeck', 'Swinington', 'Vilefast', 'Warmford'];
-            const RACES = ['Balalock', 'Balcote', 'Frid', 'Hutt', 'Mormer', 'Polan', 'Wobbit', 'Yobbit'];
-            const SIGHTS = ['AboveSight', 'InSight', 'MageSight', 'MageSpeak', 'MindSpeak', 'OutSight', 'OutSpeak', 'WizardSense', 'mind sight'];
-
-
-            
-            /* GAME STATE */
-            let state = {
-                'health': 4,
-                'items': 0,
-                'keys': 0,
-                'shotsTaken': 0,
-                'characters': {
-                    'wade': {
-                        'value': 12,
-                        'shots': 0
-                    },
-                    'zack': {
-                        'value': 12,
-                        'shots': 0
-                    },
-                    'grignr': {
-                        'value': 5,
-                        'shots': 0
-                    },
-                    'jake': {
-                        'value': 6,
-                        'shots': 0
-                    },
-                    'titus': {
-                        'value': 4,
-                        'shots': 0
-                    },
-                    'bob': {
-                        'value': 20,
-                        'shots': 0
-                    },
-                    'maxim': {
-                        'value': 15,
-                        'shots': 0
-                    },
-                    'chaddale': {
-                        'value': 3,
-                        'shots': 0
-                    },
-                    'nathaniel': {
-                        'value': 9,
-                        'shots': 0
-                    },
-                    'thorn': {
-                        'value': 13,
-                        'shots': 0
-                    },
-                }
-            };
+        /* GAME STATE */
+        let state = {
+            'health': 4,
+            'items': 0,
+            'keys': 0,
+            'shotsTaken': 0,
+            'characters': {
+                'wade': {
+                    'value': 12,
+                    'shots': 0
+                },
+                'zack': {
+                    'value': 12,
+                    'shots': 0
+                },
+                'grignr': {
+                    'value': 5,
+                    'shots': 0
+                },
+                'jake': {
+                    'value': 6,
+                    'shots': 0
+                },
+                'titus': {
+                    'value': 4,
+                    'shots': 0
+                },
+                'bob': {
+                    'value': 20,
+                    'shots': 0
+                },
+                'maxim': {
+                    'value': 15,
+                    'shots': 0
+                },
+                'chaddale': {
+                    'value': 3,
+                    'shots': 0
+                },
+                'nathaniel': {
+                    'value': 9,
+                    'shots': 0
+                },
+                'thorn': {
+                    'value': 13,
+                    'shots': 0
+                },
+            }
+        };
 
 
 
-            /* ELEMENTS */
-            let choiceButtons = document.querySelectorAll('.js-choice');
-            let finalButtons = document.querySelectorAll('.js-final');
-            let nextButtons = document.querySelectorAll('.js-next');
-            let resetButtons = document.querySelectorAll('.js-reset');
-            let shootButtons = document.querySelectorAll('.js-shoot');
-            let viewButtons = document.querySelectorAll('.js-view')
+        /* ELEMENTS */
+        let choiceButtons = document.querySelectorAll('.js-choice');
+        let finalButtons = document.querySelectorAll('.js-final');
+        let nextButtons = document.querySelectorAll('.js-next');
+        let resetButtons = document.querySelectorAll('.js-reset');
+        let shootButtons = document.querySelectorAll('.js-shoot');
+        let viewButtons = document.querySelectorAll('.js-view')
 
-            
+        
 
-            /* FUNCTIONS */
-            // from https://stackoverflow.com/questions/5072136/javascript-filter-for-objects
-            Object.filter = (obj, predicate) => 
-                Object.keys(obj)
-                    .filter( key => predicate(obj[key]) )
-                    .reduce( (res, key) => (res[key] = obj[key], res), {} );
+        /* FUNCTIONS */
+        // from https://stackoverflow.com/questions/5072136/javascript-filter-for-objects
+        Object.filter = (obj, predicate) => 
+            Object.keys(obj)
+                .filter( key => predicate(obj[key]) )
+                .reduce( (res, key) => (res[key] = obj[key], res), {} );
 
-            let hide = (element) => element.style.display = 'none';
-            let show = (element) => element.style.display = 'block';
-            let hideAll = (elements) => Array.from(elements).forEach(hide);
-            let showAll = (elements) => Array.from(elements).forEach(show);
+        let hide = (element) => element.style.display = 'none';
+        let show = (element) => element.style.display = 'block';
+        let hideAll = (elements) => Array.from(elements).forEach(hide);
+        let showAll = (elements) => Array.from(elements).forEach(show);
 
-            let advance = (current) => {
-                let next = current.closest('.screen').nextElementSibling;
-                console.log(`Leaving ${current.id}`);
-                hide(current);
-                console.log(`Entering ${next.id}`);
-                show(next);
-            };
+        let advance = (current) => {
+            let next = current.closest('.screen').nextElementSibling;
+            console.log(`Leaving ${current.id}`);
+            hide(current);
+            console.log(`Entering ${next.id}`);
+            show(next);
+        };
 
-            let advanceScreen = (button) => {
-                button.addEventListener('click', (clickEvent) => {
-                    let screen = findScreenByElement(clickEvent.target);
-                    advance(screen);
-                });
-            };
+        let advanceScreen = (button) => {
+            button.addEventListener('click', (clickEvent) => {
+                let screen = findScreenByElement(clickEvent.target);
+                advance(screen);
+            });
+        };
 
-            let attachEvents = () => {
-                Array.from(choiceButtons).forEach(handleChoice);
-                Array.from(finalButtons).forEach(prepareFinalScreen);
-                Array.from(nextButtons).forEach(advanceScreen);
-                Array.from(resetButtons).forEach(resetScreen);
-                Array.from(shootButtons).forEach(recordShot);
-                Array.from(viewButtons).forEach(switchView);
-            };
+        let attachEvents = () => {
+            Array.from(choiceButtons).forEach(handleChoice);
+            Array.from(finalButtons).forEach(prepareFinalScreen);
+            Array.from(nextButtons).forEach(advanceScreen);
+            Array.from(resetButtons).forEach(resetScreen);
+            Array.from(shootButtons).forEach(recordShot);
+            Array.from(viewButtons).forEach(switchView);
+        };
 
-            let calculateScore = (state) => {
-                console.log(state);
-                if (state.characters.bob.shots === 10) {
-                    return 372;
-                }
-
-                let score = state.items * 10;
-                console.log(`Item score: ${score}`);
-
-                Object.keys(state.characters).forEach(name => {
-                    let character = state.characters[name];
-                    score += character.shots * character.value;
-                    console.log(`${name} score: ${character.shots * character.value}`);
-                });
-                return score;
-            };
-
-            let displayEndings = (state) => {
-                if (state.keys === state.characters.bob.shots && state.keys >= 6) {
-                    console.log('Get special ending by shooting Bob Honey with all shots (and meeting minimum number of shots)')
-                    show(document.getElementById('result-bob-all'));
-                    hideAll(document.querySelectorAll('.hint'));
-                } else {
-                    let shotCharacters = getShotCharacters(state.characters);
-                    shotCharacters.forEach(character => show(document.getElementById(`result-${character}`)));
-                    console.log(`Display shot character endings: ${shotCharacters}`);
-                };
+        let calculateScore = (state) => {
+            console.log(state);
+            if (state.characters.bob.shots === 10) {
+                return 372;
             }
 
-            let displayResult = (screenName, result) => {
-                console.log(`Display result '${result}' for ${screenName}`);
-                let choices = document.querySelectorAll(`#${screenName} .choices`)[0];
-                hide(choices);
-                let resultTab = document.querySelectorAll(`#${screenName} .result-${result}`)[0];
-                show(resultTab);
-            };
+            let score = state.items * 10;
+            console.log(`Item score: ${score}`);
 
-            let displayScore = (state) => {
-                let scoreMessage = `${calculateScore(state)} points`;
-                document.getElementById('final-score').innerHTML = scoreMessage;
-            };
+            Object.keys(state.characters).forEach(name => {
+                let character = state.characters[name];
+                score += character.shots * character.value;
+                console.log(`${name} score: ${character.shots * character.value}`);
+            });
+            return score;
+        };
 
-            let findScreenByElement = (element) => {
-                let parent = element.parentElement;
-                
-                while (parent !== null) {
-                    if (parent.classList.contains('screen')) {
-                        break;
-                    }
-                    parent = parent.parentElement;
+        let getStoryWordCount = () => {
+            let storyElements = document.querySelectorAll('.story');
+            let storyString = Array.from(storyElements).map(x => x.innerText).reduce( (sum, current) => sum + ' ' + current);
+            let nonWords = ['', ' ', '\n'];
+            let words = storyString.split(' ').filter(x => !nonWords.includes(x));
+            console.log(`Story word count: ${words.length}`);
+            return words.length;
+        };
+
+        let displayEndings = (state) => {
+            if (state.keys === state.characters.bob.shots && state.keys >= 6) {
+                console.log('Get special ending by shooting Bob Honey with all shots (and meeting minimum number of shots)')
+                show(document.getElementById('result-bob-all'));
+                hideAll(document.querySelectorAll('.hint'));
+            } else {
+                let shotCharacters = getShotCharacters(state.characters);
+                shotCharacters.forEach(character => show(document.getElementById(`result-${character}`)));
+                console.log(`Display shot character endings: ${shotCharacters}`);
+            };
+        }
+
+        let displayResult = (screenName, result) => {
+            console.log(`Display result '${result}' for ${screenName}`);
+            let choices = document.querySelectorAll(`#${screenName} .choices`)[0];
+            hide(choices);
+            let resultTab = document.querySelectorAll(`#${screenName} .result-${result}`)[0];
+            show(resultTab);
+        };
+
+        let displayScore = (state) => {
+            let scoreMessage = `${calculateScore(state)} points`;
+            document.getElementById('final-score').innerHTML = scoreMessage;
+        };
+
+        let findScreenByElement = (element) => {
+            let parent = element.parentElement;
+            
+            while (parent !== null) {
+                if (parent.classList.contains('screen')) {
+                    break;
                 }
+                parent = parent.parentElement;
+            }
 
-                return parent;
-            };
+            return parent;
+        };
 
-            let getBulletsText = (keys) => {
-                if (keys === 0) {
-                    return document.getElementById('bullets-0').content;
-                } else if (keys === 1) {
-                    return document.getElementById('bullets-1').content;
+        let getBulletsText = (keys) => {
+            if (keys === 0) {
+                return document.getElementById('bullets-0').content;
+            } else if (keys === 1) {
+                return document.getElementById('bullets-1').content;
+            } else {
+                return document.getElementById('bullets-multiple').content;
+            }
+        };
+
+        let generateInstructions = (number) => {
+            return `Fire your ${number === undefined ? '' : numberToOrdinal(number)} shot`;
+        };
+
+        let getShotCharacters = (characters) => Object.keys(Object.filter(characters, character => character.shots > 0));
+
+        let greetDevs = () => {
+            console.log(`Hello, fellow developer! I haven't obfuscated any code, so feel free to poke around and cheat. Please don't spoil the game for others. 🤘`);
+            console.log(`If you find any bugs, please open an issue: https://github.com/briankoser/372adventure/issues/new`);
+        };
+
+        let handleChoice = (button) => {
+            button.addEventListener('click', (clickEvent) => {
+                let button = clickEvent.target;
+                let screen = findScreenByElement(button);
+
+                let result = button.dataset.result;
+                console.log(`Result is '${result}'`);
+                storeResult(result);
+                displayResult(screen.id, result);
+
+                if (state.health <= 0) {
+                    Array.from(nextButtons).forEach(button => hide(button));
+                    let deathScreen = document.getElementById('screen-dead');
+                    show(deathScreen);
+                }
+            });
+        };
+
+        let highlight = (elementsSelector, elementToHighlightRegex, highlightClass) => {
+            let elements = document.querySelectorAll(elementsSelector);
+            Array.from(elements).forEach(element => 
+                element.innerHTML = element.innerHTML.replace(elementToHighlightRegex, `<span class="${highlightClass}">$&</span>`));
+        };
+
+        let numberToOrdinal = (number) => {
+            switch(number) {
+                case 1:
+                    return 'first';
+                case 2:
+                    return 'second';
+                case 3:
+                    return 'third';
+                case 4:
+                    return 'fourth';
+                case 5:
+                    return 'fifth';
+                case 6:
+                    return 'sixth';
+                case 7:
+                    return 'seventh';
+                case 8:
+                    return 'eighth';
+                case 9:
+                    return 'ninth';
+                case 10:
+                    return 'tenth';
+                default:
+                    return '';
+            }
+        };
+
+        let prepareFinalScreen = (button) => {
+            button.addEventListener('click', (clickEvent) => {
+                let bulletsText = getBulletsText(state.keys);
+                document.getElementById('bullets-text').appendChild(bulletsText);
+                console.log(`Bullets text: ${bulletsText}`);
+
+                if (state.keys === 0) {
+                    displayScore(state);
                 } else {
-                    return document.getElementById('bullets-multiple').content;
+                    document.getElementById('instructions').innerHTML = generateInstructions(state.keys === 1 ? undefined : 1); // if there's only one bullet, display 'fire bullet'; if more, display 'fire first bullet'
+                    show(document.getElementById(randomHint()));
                 }
-            };
+            });
+        };
 
-            let generateInstructions = (number) => {
-                return `Fire your ${number === undefined ? '' : numberToOrdinal(number)} shot`;
-            };
+        let randomHint = () => {
+            let hintCount = document.querySelectorAll('.hint').length;
+            return `hint-${randomNumber(hintCount)}`;
+        };
 
-            let getShotCharacters = (characters) => Object.keys(Object.filter(characters, character => character.shots > 0));
+        let randomNumber = (max) => (Math.trunc(Math.random() * 10) % max) + 1;
 
-            let greetDevs = () => {
-                console.log(`Hello, fellow developer! I haven't obfuscated any code, so feel free to poke around and cheat. Please don't spoil the game for others. 🤘`);
-                console.log(`If you find any bugs, please open an issue: https://github.com/briankoser/372adventure/issues/new`);
-            };
+        let randomShadowMoonElement = (type) => {
+            return 'todo';
+        };
 
-            let handleChoice = (button) => {
-                button.addEventListener('click', (clickEvent) => {
-                    let button = clickEvent.target;
-                    let screen = findScreenByElement(button);
+        let recordShot = (button) => {
+            button.addEventListener('click', (clickEvent) => {
+                let shotCharacter = clickEvent.target.dataset.character;
+                state.characters[shotCharacter].shots += 1;
+                state.shotsTaken += 1;
+                console.log(`Shot ${shotCharacter}, ${state.keys - state.shotsTaken} shots left`);
 
-                    let result = button.dataset.result;
-                    console.log(`Result is '${result}'`);
-                    storeResult(result);
-                    displayResult(screen.id, result);
+                if (state.shotsTaken === state.keys) {
+                    hide(document.getElementById('shots'));
+                    show(document.getElementById('final-results'));
 
-                    if (state.health <= 0) {
-                        Array.from(nextButtons).forEach(button => hide(button));
-                        let deathScreen = document.getElementById('screen-dead');
-                        show(deathScreen);
-                    }
-                });
-            };
-
-            let highlight = (elementsSelector, elementToHighlightRegex, highlightClass) => {
-                let elements = document.querySelectorAll(elementsSelector);
-                Array.from(elements).forEach(element => 
-                    element.innerHTML = element.innerHTML.replace(elementToHighlightRegex, `<span class="${highlightClass}">$&</span>`));
-            };
-
-            let numberToOrdinal = (number) => {
-                switch(number) {
-                    case 1:
-                        return 'first';
-                    case 2:
-                        return 'second';
-                    case 3:
-                        return 'third';
-                    case 4:
-                        return 'fourth';
-                    case 5:
-                        return 'fifth';
-                    case 6:
-                        return 'sixth';
-                    case 7:
-                        return 'seventh';
-                    case 8:
-                        return 'eighth';
-                    case 9:
-                        return 'ninth';
-                    case 10:
-                        return 'tenth';
-                    default:
-                        return '';
+                    displayEndings(state);
+                    displayScore(state);
+                } else {
+                    document.getElementById('instructions').innerHTML = generateInstructions(state.shotsTaken + 1);
                 }
-            };
+            });
+        };
 
-            let prepareFinalScreen = (button) => {
-                button.addEventListener('click', (clickEvent) => {
-                    let bulletsText = getBulletsText(state.keys);
-                    document.getElementById('bullets-text').appendChild(bulletsText);
-                    console.log(`Bullets text: ${bulletsText}`);
+        let reset = () => {
+            window.location.reload(false);
+        };
 
-                    if (state.keys === 0) {
-                        displayScore(state);
-                    } else {
-                        document.getElementById('instructions').innerHTML = generateInstructions(state.keys === 1 ? undefined : 1); // if there's only one bullet, display 'fire bullet'; if more, display 'fire first bullet'
-                        show(document.getElementById(randomHint()));
-                    }
-                });
-            };
+        let resetScreen = (button) => {
+            button.addEventListener('click', (clickEvent) => {
+                reset();
+            });
+        };
 
-            let randomHint = () => {
-                let hintCount = document.querySelectorAll('.hint').length;
-                return `hint-${randomNumber(hintCount)}`;
-            };
+        let setAboutScreenDynamicText = () => {
+            let wordCountTemplate = document.getElementById('word-count-template').content.textContent;
+            let storyWordCount = getStoryWordCount();
+            let percentOfArgon = Math.round((storyWordCount / EYE_OF_ARGON_WORD_COUNT) * 100);
+            let text = wordCountTemplate.replace('{wordCount}', storyWordCount).replace('{percentOfArgon}', percentOfArgon);
+            document.getElementById('word-count').innerHTML = text;
+        };
 
-            let randomNumber = (max) => (Math.trunc(Math.random() * 10) % max) + 1;
+        let storeResult = (result) => {
+            switch (result) {
+                case 'key':
+                    state.keys += 1;
+                    break;
+                case 'item':
+                    state.items += 1;
+                    break;
+                case 'lose':
+                    state.health -= 1;
+                    break;
+                default:
+                    console.error(`Error: storeResult() passed invalid 'result' param: ${result}`);
+                    break;
+            }
 
-            let randomShadowMoonElement = (type) => {
-                return 'todo';
-            };
+            console.log(state);
+        };
 
-            let recordShot = (button) => {
-                button.addEventListener('click', (clickEvent) => {
-                    let shotCharacter = clickEvent.target.dataset.character;
-                    state.characters[shotCharacter].shots += 1;
-                    state.shotsTaken += 1;
-                    console.log(`Shot ${shotCharacter}, ${state.keys - state.shotsTaken} shots left`);
+        let styleQuestionMarks = () => {
+            highlight('.story', /\?/g, 'question-mark');
+        };
 
-                    if (state.shotsTaken === state.keys) {
-                        hide(document.getElementById('shots'));
-                        show(document.getElementById('final-results'));
+        let switchView = (button) => {
+            button.addEventListener('click', (clickEvent) => {
+                let views = document.querySelectorAll('.view');
+                hideAll(views);
 
-                        displayEndings(state);
-                        displayScore(state);
-                    } else {
-                        document.getElementById('instructions').innerHTML = generateInstructions(state.shotsTaken + 1);
-                    }
-                });
-            };
-
-            let reset = () => {
-                window.location.reload(false);
-            };
-
-            let resetScreen = (button) => {
-                button.addEventListener('click', (clickEvent) => {
-                    reset();
-                });
-            };
-
-            let storeResult = (result) => {
-                switch (result) {
-                    case 'key':
-                        state.keys += 1;
-                        break;
-                    case 'item':
-                        state.items += 1;
-                        break;
-                    case 'lose':
-                        state.health -= 1;
-                        break;
-                    default:
-                        console.error(`Error: storeResult() passed invalid 'result' param: ${result}`);
-                        break;
-                }
-
-                console.log(state);
-            };
-
-            let styleQuestionMarks = () => {
-                highlight('.story', /\?/g, 'question-mark');
-            };
-
-            let switchView = (button) => {
-                button.addEventListener('click', (clickEvent) => {
-                    let views = document.querySelectorAll('.view');
-                    hideAll(views);
-
-                    let button = clickEvent.target;
-                    let viewChoice = button.dataset.view;
-                    let selectedView = document.getElementById(`view-${viewChoice}`);
-                    show(selectedView);
-                });
-            };
+                let button = clickEvent.target;
+                let viewChoice = button.dataset.view;
+                let selectedView = document.getElementById(`view-${viewChoice}`);
+                show(selectedView);
+            });
+        };
 
         window.addEventListener('DOMContentLoaded', (event) => {
             /* MAIN */
             styleQuestionMarks();
+            setAboutScreenDynamicText();
             attachEvents();
             greetDevs();
         });
