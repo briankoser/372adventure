@@ -74,6 +74,7 @@
 
         button {
             display: block;
+            height: 100%;
         }
 
 
@@ -205,8 +206,8 @@
             <div id="screen-armada" class="screen hidden">
                 <h1>Armada</h1>
                 <div class="story">
-                    <p>You arrive on Planet Moon Base, which looks exactly like the moon. You dock with the moon base and leave your ship, just like Major Bill Moore in the classic sci-fi film <i>Project Moon Base</i> (which was funded by the government as anti-alien propaganda). The door slides open, and after a pregnant pause, you step onto the base. You glance around the structure and feel your face forming a goofy grin.
-                    <p>You see Zack Lightman's parents; his insanely hot mom is covering her mouth with her very long fingers as she chuckles at a joke from her husband. You entered in the middle of the conversation, but you heard the punchline, "You're welcome." The two Mikes are in the corner watching Brady Bunch reruns. Lex is using a QComm, probably hacking but there's no way to know for sure. Major Graham Fogg and Major Shin are playing a song from the Raid the Arcade mixtape on their musical instruments to the delight of Atomic Mom, Wodie, Crazy G, and Milo.
+                    <p>You arrive on Planet Moon Base, which looks exactly like the moon. You dock with the moon base and leave your ship, just like Major Bill Moore in the classic sci-fi film <i>Project Moon Base</i> (which was funded by the government as anti-alien propaganda). The door slides open, and after a pregnant pause you step onto the base. You glance around the structure and feel your face forming a goofy grin.
+                    <p>You see Zack Lightman's parents; his insanely hot mom is covering her mouth with her very long fingers as she chuckles at a joke from her husband. You entered in the middle of the conversation, but you heard the punchline, "You're welcome." The two Mikes are in the corner watching Brady Bunch reruns. Lex is using a QComm; she's probably hacking but there's no way to know for sure. Major Graham Fogg and Major Shin are playing a song from the Raid the Arcade mixtape on their musical instruments to the delight of Atomic Mom, Wodie, Crazy G, and Milo.
                 </div>
                 <div class="choices">
                     <button class="js-choice" data-result="item">Look for food</button>
@@ -483,7 +484,7 @@
                         <div class="story">
                             <p>You sit and seal your senses from your surroundings. The wind blows a newspaper with the headline, "THIS JUST IN: IN JUST US!" past your feet; you don't notice with your eyes closed and ears plugged.
                             <p>Momentarily, you metastasize your motive force toward the mechanism of movement made material by the maneuvers of the maginative magic magicians of mirth. En route you encounter...
-                            <p>Forget it. I'm done. You see a beautiful rainbow. And children playing with puppies. And homemade pie.
+                            <p>Nah, not doing this. You see a beautiful rainbow. And children playing with puppies. And homemade pie.
                         </div>
                         <p class="result-points">Gain 10 points!
                         <button class="next js-next">Go to Planet Albania</button>
@@ -604,9 +605,9 @@
                     <h1>The Lair of the White Worm</h1>
                     <p>You land your ship on Planet Diana's Grove. An old man greets you and wrings your hand heartily as you disembark.
                     <p>"My boy, I have so been looking forward to seeing you. I have been dreaming of this happiness for thousands of miles!"
-                    <p>"Alright," you say weakly, unsure how to proceed.
-                    <p>"I have the whole day planned," continues the old man. "We shall start with a silent breakfast, or perhaps an early cup of tea amplified to the dimensions of a possible breakfast, followed by a visit to Doom Tower. Then, as President of the Mercian Archaeological Society, I must take you to the giant snake mounds. We shall, of course, wait until we are alone to discuss my theories on the matter over walnuts and wine—although perhaps it would be best to sleep on it, you watching me sleep—and discuss further plans. I hope that we may then dicuss British property law—" 
-                    <p>"I should like," you reply, "nothing better, but I am afraid I have urgent business. I must see a small animal merchant at once." 
+                    <p>"And I, ever since I left my horse farm with over a thousand nearly-all-good horses, have been unable to sleep with anticipation!" you reply.
+                    <p>"I have the whole day planned, my boy," continues the old man. "We shall start with a silent breakfast, or perhaps an early cup of tea amplified to the dimensions of a possible breakfast, followed by a visit to Doom Tower. Then, as President of the Mercian Archaeological Society, I must take you to the giant snake mounds. We shall, of course, wait until we are alone to discuss my theories on the matter over walnuts and wine—although perhaps it would be best to sleep on it, whoever is the first arise to sit watching the other sleep—and discuss further plans. I hope that we may then discuss British property law—"
+                    <p>"I should like," you reply, "nothing better, but I am afraid I have urgent business. I must first see a small animal merchant at once."
                     <p>When Ross hears your request, he asks, "Do you want something special, or will an ordinary mongoose do?"
                     <p>"I think my current scenario calls for one of the most special variety."
                     <p>Ross smiles and puts a long finger against his nose. He retreats to a back room before returning with three mongoose boxes, placing them on his counter and opening each in turn.
@@ -945,7 +946,7 @@ I have to go, said Willow. -->
         const SIGHTS = ['AboveSight', 'InSight', 'MageSight', 'MageSpeak', 'MindSpeak', 'OutSight', 'OutSpeak', 'WizardSense', 'mind sight'];
 
         const EYE_OF_ARGON_WORD_COUNT = 11378;
-
+        const SUPPORTS_NATIVE_SMOOTH_SCROLL = 'scrollBehavior' in document.documentElement.style;
         
         /* GAME STATE */
         let state = {
@@ -1033,6 +1034,12 @@ I have to go, said Willow. -->
             button.addEventListener('click', (clickEvent) => {
                 let screen = findScreenByElement(clickEvent.target);
                 advance(screen);
+
+                if (SUPPORTS_NATIVE_SMOOTH_SCROLL) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' }); // smooth scrolling, not supported in IE, Edge, Mobile Safari
+                } else {
+                    window.scrollTo(0, 0); // fallback for IE, Edge, Mobile Safari
+                }
             });
         };
 
