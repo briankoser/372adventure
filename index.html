@@ -33,8 +33,6 @@
 
         nav {
             background-color: black;
-            display: flex;
-            justify-content: space-between;
             padding: 10px;
         }
 
@@ -42,6 +40,14 @@
         nav a,
         nav button {
             color: white;
+        }
+
+        .nav-title {
+            float: left;
+        }
+
+        .nav-links {
+            float: right;
         }
 
         main {
@@ -103,6 +109,14 @@
             margin-top: 40px;
         }
 
+
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
         .hidden {
             display: none;
         }
@@ -123,9 +137,9 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav class="clearfix">
         <div class="nav-title">372 Adventure</div>
-        <div>
+        <div class="nav-links">
             <button class="view-button js-view" data-view="game">Game</button>
             <button class="view-button js-view" data-view="about">About</button>
         </div>
