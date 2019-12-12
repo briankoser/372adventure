@@ -664,13 +664,7 @@
     Tumbled to
 
                     <h2>Chapter 1</h2>
-                    <p>You are cantering your horse, {horse}, down the road toward the city of {location1}. On the side of the road, you spot a small {race}, a rarity in these parts.
-                    <p>"Hello there!" he hails you, waving his arm with asperity. "Good sir, could yer take a poor {race} as fer as {location2}? It's a mere league down ze road, but I aspire to avoid the Mad Dogs and their gobbling snarls." The {race} folk are a small people, basically {animal} men, with furry {bodyParts}.
-                    <p>You give him a tigerish smile and the little {race} swings up onto your steed with the same disconcertingly boneless grace as a swan. "I am {person}," the {race} says in introduction.
-                    <p>Starting again, your horse picks up the pace with celerity. You come to the {location3} River, but are able to cross with minimal difficulty due to all the silting.
-                    <p>You come to {location2} and the {race} springs off your horse, making the sound of {animalNoise1} crossed with {animalNoise2}, a call made by all {race} in times of distress, boredom, or—in this case—mirth.
-                    <p>"Thank 'ee kindly," {person} offers. "You more 'n likely saved my life, and thas a fack," he says with verity. The {race} tosses you a gewgaw, the common payment for a brief jaunt, and brings your balance sheets into parity.
-                    <p>You leave {location2} on the path once more to {location1}. Suddenly, you tumble to a magus on a llamacorn. She bounds toward you and casts a minor glamor!
+                    <div id="shadow-moon-chapter-one"></div>
                 </div>
                 <div class="choices">
                     <button class="js-choice" data-result="item">Counter with a passive charm</button>
@@ -883,6 +877,18 @@ I have to go, said Willow. -->
                 <p><button class="js-reset">Play again</button>
             </div>
 
+            <template id="shadow-moon-template">
+                <div class="story">
+                    <p>You are cantering your horse, {horse}, down the road toward the city of {location1}. Your {sight} alerts you to a small {race} standing on the side of the road ahead, a rarity in these parts.
+                    <p>"Hello there!" he hails you, waving his arm with asperity. "Good sir, could yer take a poor {race} as fer as {location2}? It's a mere league down ze road, but I aspire to avoid the Mad Dogs and their gobbling snarls." The {race} folk are a small people, basically {animal} men, with furry {bodyParts}.
+                    <p>You give him a tigerish smile and the little {race} swings up onto your steed with the same disconcertingly boneless grace as a swan. "I am {person}," the {race} says in introduction.
+                    <p>Starting again, your horse picks up the pace with celerity. You come to the {location3} River, but are able to cross with minimal difficulty due to all the silting.
+                    <p>You come to {location2} and the {race} springs off your horse, making the sound of {animalNoise1} crossed with {animalNoise2}, a call made by all {race}s in times of distress, boredom, or—in this case—mirth.
+                    <p>"Thank 'ee kindly," {person} offers. "You more 'n likely saved my life, and thas a fack," he says with verity. The {race} tosses you a gewgaw, the common payment for a brief jaunt, and brings your balance sheets into parity.
+                    <p>You leave {location2} on the path once more to {location1}. Suddenly, you tumble to a magus on a llamacorn. She bounds toward you and casts a minor glamor!
+                </div>
+            </template>
+
             <template id="bullets-0">
                 <div class="story">
                     <p>You stand frozen for 20 seconds. Without any keys, there's no way to win this game. Turning to leave, you stop. 
@@ -935,20 +941,24 @@ I have to go, said Willow. -->
 
     <script>
         /* CONSTANTS */
-        const ANIMALS = ['aardvark', 'ape', 'capybara', 'crab', 'fruit bat', 'manatee', 'opossum', 'platypus', 'rodent', 'seal', 'shrimp', 'sloth'];
-        const ANIMAL_NOISES = ['alligator bellows', 'ape howls', 'badger growls', 'chimpanzee screams', 'duck quacks', 'giraffe bleats', 'goose honks', 'moose bellows', 'rodent squeaks', 'turkey gobbles'];
-        const BODY_PARTS = ['ears', 'feet', 'fingers', 'lips', 'navels', 'necks', 'thighs'];
-        const FIRST_NAMES = ['Almond', 'Apple', 'Bark', 'Branch', 'Calmcartigan', 'Cork', 'Elm', 'Iyck', 'Moss', 'Mrifk', 'Oat', 'Peck', 'Penalon', 'Proudpartigan', 'Sadsartigan', 'Shatlart', 'Stem', 'Stick', 'Twig', 'Walnut'];
-        const HORSE_NAMES = ['Biscuit Head', 'Goat Roper', 'Harry Trotter', 'Ogden Sires', 'Sheriff Tack Starr', 'Veronica Flaxon', 'Wade Trots'];
-        const LAST_NAMES = ['Bearbuilder', 'Bellhecker', 'Bongohecker', 'Bronzedhide', 'Fifehecker', 'Flutehecker', 'Harphecker', 'Hornhecker', 'Magesighter', 'Muffinsmasher', 'Pipehecker', 'Sackbut', 'Saxhecker', 'Tiompan', 'Ufwell'];
-        const LOCATIONS = ['Ashchester', 'Balaham Hills', 'Balatun Moors', 'Belasmere', 'Blingenham Mountain', 'Dimknot Down', 'Dorbury', 'Doshbourne', 'Dukeshouse Lake', 'Duncaster', 'Dungsdump', 'Meadwood', 'Middleshutt', 'Mynyddlock', 'Nancaster', 'Somerbeck', 'Swinington', 'Vilefast', 'Warmford'];
-        const RACES = ['Balalock', 'Balcote', 'Frid', 'Hutt', 'Mormer', 'Polan', 'Wobbit', 'Yobbit'];
-        const SIGHTS = ['AboveSight', 'InSight', 'MageSight', 'MageSpeak', 'MindSpeak', 'OutSight', 'OutSpeak', 'WizardSense', 'mind sight'];
-
         const EYE_OF_ARGON_WORD_COUNT = 11378;
         const SUPPORTS_NATIVE_SMOOTH_SCROLL = 'scrollBehavior' in document.documentElement.style;
-        
+
+
+
         /* GAME STATE */
+        let shadowMoonElements = {
+            'animal': ['aardvark', 'ape', 'capybara', 'crab', 'fruit bat', 'manatee', 'opossum', 'platypus', 'rodent', 'seal', 'shrimp', 'sloth'],
+            'animalNoise': ['alligator bellows', 'ape howls', 'badger growls', 'chimpanzee screams', 'duck quacks', 'giraffe bleats', 'goose honks', 'moose bellows', 'rodent squeaks', 'turkey gobbles'],
+            'bodyPart': ['ears', 'feet', 'fingers', 'lips', 'navels', 'necks', 'thighs'],
+            'firstName': ['Almond', 'Apple', 'Bark', 'Branch', 'Calmcartigan', 'Cork', 'Elm', 'Iyck', 'Moss', 'Mrifk', 'Oat', 'Peck', 'Penalon', 'Proudpartigan', 'Sadsartigan', 'Shatlart', 'Stem', 'Stick', 'Twig', 'Walnut'],
+            'horse': ['Biscuit Head', 'Goat Roper', 'Harry Trotter', 'Ogden Sires', 'Sheriff Tack Starr', 'Veronica Flaxon', 'Wade Trots'],
+            'lastName': ['Bearbuilder', 'Bellhecker', 'Bongohecker', 'Bronzedhide', 'Fifehecker', 'Flutehecker', 'Harphecker', 'Hornhecker', 'Magesighter', 'Muffinsmasher', 'Pipehecker', 'Sackbut', 'Saxhecker', 'Tiompan', 'Uffell'],
+            'location': ['Ashchester', 'Balaham Hills', 'Balatun Moors', 'Belasmere', 'Blingenham Mountain', 'Dimknot Down', 'Dorbury', 'Doshbourne', 'Dukeshouse Lake', 'Duncaster', 'Dungsdump', 'Meadwood', 'Middleshutt', 'Mynyddlock', 'Nancaster', 'Somerbeck', 'Swinington', 'Vilefast', 'Warmford'],
+            'race': ['Balalock', 'Balcote', 'Frid', 'Hutt', 'Mormer', 'Polan', 'Wobbit', 'Yobbit'],
+            'sight': ['AboveSight', 'InSight', 'MageSight', 'OutSight', 'WizardSense', 'mind sight']
+        }
+
         let state = {
             'health': 4,
             'items': 0,
@@ -1211,7 +1221,17 @@ I have to go, said Willow. -->
         let randomNumber = (max) => (Math.trunc(Math.random() * 10) % max) + 1;
 
         let randomShadowMoonElement = (type) => {
-            return 'todo';
+            if (type === 'person') {
+                let firstNameRandomIndex = randomNumber(shadowMoonElements['firstName'].length) - 1;
+                let firstName = shadowMoonElements['firstName'].splice(firstNameRandomIndex, 1);
+                let lastNameRandomIndex = randomNumber(shadowMoonElements['lastName'].length) - 1;
+                let lastName = shadowMoonElements['lastName'].splice(lastNameRandomIndex, 1);
+                return `${firstName} ${lastName}`;
+            }
+
+            let randomIndex = randomNumber(shadowMoonElements[type].length) - 1;
+            let element = shadowMoonElements[type].splice(randomIndex, 1)[0];
+            return element;
         };
 
         let recordShot = (button) => {
@@ -1249,6 +1269,25 @@ I have to go, said Willow. -->
             let percentOfArgon = Math.round((storyWordCount / EYE_OF_ARGON_WORD_COUNT) * 100);
             let text = wordCountTemplate.replace('{wordCount}', storyWordCount).replace('{percentOfArgon}', percentOfArgon);
             document.getElementById('word-count').innerHTML = text;
+        };
+
+        let setShadowMoonDynamicText = () => {
+            let shadowMoonTemplate = document.getElementById('shadow-moon-template').content;
+            document.getElementById('shadow-moon-chapter-one').appendChild(shadowMoonTemplate);
+            
+            let shadowMoonHtml = document.getElementById('shadow-moon-chapter-one').innerHTML;
+            shadowMoonHtml = shadowMoonHtml.replace(/{animal}/g, randomShadowMoonElement('animal'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{animalNoise1}/g, randomShadowMoonElement('animalNoise'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{animalNoise2}/g, randomShadowMoonElement('animalNoise'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{bodyParts}/g, randomShadowMoonElement('bodyPart'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{horse}/g, randomShadowMoonElement('horse'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{location1}/g, randomShadowMoonElement('location'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{location2}/g, randomShadowMoonElement('location'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{location3}/g, randomShadowMoonElement('location'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{person}/g, randomShadowMoonElement('person'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{race}/g, randomShadowMoonElement('race'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{sight}/g, randomShadowMoonElement('sight'));
+            document.getElementById('shadow-moon-chapter-one').innerHTML = shadowMoonHtml;
         };
 
         let storeResult = (result) => {
@@ -1290,6 +1329,7 @@ I have to go, said Willow. -->
             /* MAIN */
             styleQuestionMarks();
             setAboutScreenDynamicText();
+            setShadowMoonDynamicText();
             attachEvents();
             greetDevs();
         });
