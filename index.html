@@ -51,7 +51,6 @@
         }
 
         main {
-            /*text-align: justify;*/
             padding: 1em;
         }
 
@@ -81,6 +80,7 @@
         button {
             -webkit-appearance: none;
             border-radius: 10px;
+            display: block;
         }
 
 
@@ -132,6 +132,10 @@
 
         #view-about h1 {
             margin-top: 3em;
+        }
+
+        #screen-trucking-through-time {
+            text-align: justify;
         }
     </style>
 </head>
@@ -897,11 +901,11 @@ I have to go, said Willow. -->
                 <div class="story">
                     <p>You are cantering your horse, {horse}, down the road toward the city of {location1}. The two brownies travelling with you, Bing and Crosby, are sitting on your shoulders and bickering.
                     <p>Your {sight} alerts you to a small {race} standing on the side of the road ahead, a rarity in these parts.
-                    <p>"Hello there!" he hails you, waving his arm with asperity. "Good sir, could yer take a poor {race} as fer as {location2}? It is a mere league down der road, but I aspire to avoid the Mad Dogs and their gobbling snarls." The {race} folk are a small people, basically {animal} men, with furry {bodyParts}.
+                    <p>"Hello there!" he hails you, waving his arm with asperity. "Good sir, could yer take a poor {race} as fer as {location2}? It is a mere league down der road, but I aspire to avoid the Mad Dogs and their gobbling snarls." The {race} folk are a small people, basically {animal1} men, with furry {bodyParts}.
                     <p>You give him a tigerish smile and the little {race} swings up onto your steed with the same disconcertingly boneless grace as a swan. "I am {person}," the {race} says in introduction.
-                    <p>Starting again, your horse picks up the pace with celerity. You come to a small {valley}, bisected by a modest {river}. To the {cardinalDirection}, a ridge of mountains rises, the foreslopes sweatered by evergreen trees filled to bursting with foliage, birds, and bird nests, the nests themselves glutted with bird eggs, chipmunks, and little shiny things carried hence by crows and mockingbirds, the former obsessed with collecting baubles, the latter preferring trinkets.
+                    <p>Starting again, your horse picks up the pace with celerity. You come to a small {valley}, bisected by a modest {river}. To the {cardinalDirection}, a ridge of mountains rises, the foreslopes sweatered by evergreen trees filled to bursting with foliage, birds, and birds' nests, the nests themselves glutted with bird eggs, chipmunks, and little shiny things carried hence by crows and mockingbirds, the former obsessed with collecting baubles, the latter preferring trinkets.
                     <p>You cross the small {river}, known to the local inhabitants as the {location3} River, the task made leisurely due to abundant silting.
-                    <p>You come to {location2} and slow {horse} to a walk as you enter the town square. It is a town square unlike any other, filled with {animal}s dancing to their organ grinder's tunes, {townSquareElement1}, and the occasional {townSquareElement2}.
+                    <p>You come to {location2} and slow {horse} to a walk as you enter the town square. It is a town square unlike any other, filled with {animal2}s dancing to their organ grinder's tunes, {townSquareElement1}, and the occasional {townSquareElement2}.
                     <p>The {race} springs off your horse, making the sound of {animalNoise1} crossed with {animalNoise2}, a call made by all {race}s in times of distress, boredom, or—in this case—mirth.
                     <p>"Thank 'ee kindly," {person} offers. "You more 'n likely saved my life, and thas a fack," he says with verity. The {race} tosses you a gewgaw, the common payment for a brief jaunt, and brings your balance sheets into parity.
                     <p>You leave {location2} on the path once more to {location1}. Suddenly, you tumble to a magus on a llamacorn. She bounds toward you and casts a minor glamor!
@@ -1299,7 +1303,8 @@ I have to go, said Willow. -->
             document.getElementById('shadow-moon-chapter-one').appendChild(shadowMoonTemplate);
             
             let shadowMoonHtml = document.getElementById('shadow-moon-chapter-one').innerHTML;
-            shadowMoonHtml = shadowMoonHtml.replace(/{animal}/g, randomShadowMoonElement('animal'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{animal1}/g, randomShadowMoonElement('animal'));
+            shadowMoonHtml = shadowMoonHtml.replace(/{animal2}/g, randomShadowMoonElement('animal'));
             shadowMoonHtml = shadowMoonHtml.replace(/{animalNoise1}/g, randomShadowMoonElement('animalNoise'));
             shadowMoonHtml = shadowMoonHtml.replace(/{animalNoise2}/g, randomShadowMoonElement('animalNoise'));
             shadowMoonHtml = shadowMoonHtml.replace(/{bodyParts}/g, randomShadowMoonElement('bodyPart'));
