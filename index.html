@@ -696,7 +696,7 @@
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
-                        <p class="story">"Don't try it, magus! I have the high ground!" you yell. Your modest enchantment poleaxes the minor glamor back toward the magus and turns her into a key.
+                        <p class="story">"Don't try it, magus! I have the high ground!" you yell. Your modest enchantment poleaxes the minor glamor like a sledgehammer back toward the magus and turns her into a key.
                         <p class="result-points">Gain the Nelwyn Key!
                         <button class="next js-next js-final">Go to the final level</button>
                     </div>
@@ -924,21 +924,21 @@
 
         /* GAME STATE */
         let shadowMoonElements = {
-            'animal': ['aardvark', 'ape', 'capybara', 'crab', 'fire drake', 'fruit bat', 'inflatable cow', 'manatee', 'night heron', 'opossum', 'pig', 'rodent', 'seal', 'shrimp', 'sloth'],
-            'animalNoise': ['alligator bellows', 'ape howls', 'badger growls', 'chimpanzee screams', 'duck quacks', 'giraffe bleats', 'goose honks', 'heron keenings', 'moose bellows', 'rodent squeaks', 'turkey gobbles'],
-            'bodyPart': ['ears', 'feet', 'fingers', 'lips', 'navels', 'necks', 'thighs'],
+            'animal': ['ape', 'capybara', 'corgi', 'crab', 'ferret', 'fire drake', 'fruit bat', 'inflatable cow', 'killer whale', 'lesser lemur', 'manatee', 'night heron', 'opossum', 'pig', 'raccoon', 'rodent', 'seal', 'shrimp', 'sloth', 'stag'],
+            'animalNoise': ['alligator bellows', 'ape howls', 'badger growls', 'chimpanzee screams', 'duck quacks', 'giraffe bleats', 'goose honks', 'night heron keenings', 'moose bellows', 'rodent squeaks', 'turkey gobbles'],
+            'bodyPart': ['elbows', 'fingers', 'lips', 'navels', 'necks', 'thighs', 'toes'],
             'cardinalDirection': ['north east', 'north west', 'south east', 'south west'],
             'clothingArticle': ['doublet', 'jerkin', 'tunic'],
-            'firstName': ['Almond', 'Bark', 'Bigash', 'Branch', 'Burgher', 'Clucas', 'Diabeetus', 'Glaive', 'Iyck', 'Markharrison', 'Moss', 'Mrifk', 'Oatmeal', 'Peck', 'Penalon', 'Pigmalion', 'Pinecone', 'Sadsartigan', 'Shatlart', 'Stick', 'Walnut'],
+            'firstName': ['Almond', 'Bark', 'Bigash', 'Branch', 'Burgher', 'Burglecut', 'Clucas', 'Diabeetus', 'Glaive', 'Iyck', 'Markharrison', 'Moss', 'Mrifk', 'Oatmeal', 'Peck', 'Penalon', 'Pigmalion', 'Pinecone', 'Sadsartigan', 'Shatlart', 'Stick', 'Walnut'],
             'horse': ['Biscuit Head', 'Goat Roper', 'Harry Trotter', 'Ogden Sires', 'Sheriff Tack Starr', 'Veronica Flaxen', 'Wade Trots'],
-            'lastName': ['Battletoad', 'Bearbuilder', 'Bellybumper', 'Bronzedhide', 'Bungstarter', 'Fifehecker', 'Foreslope', 'Harphecker', 'Hornhecker', 'Knolls', 'Lardash', 'Muffinsmasher', 'Pendergast', 'Sackbut', 'Tiompan'],
+            'lastName': ['Bearbuilder', 'Bellybumper', 'Bronzedhide', 'Bungstarter', 'Fifehecker', 'Foreslope', 'Harphecker', 'Hornhecker', 'Knolls', 'Lardash', 'Muffinsmasher', 'Pendergast', 'Sackbut', 'Tiompan'],
             'location': ['Ashchester', 'Ballyham Hills', 'Bleepington Mountain', 'Buncaster', 'Dimknot Down', 'Dungsdump', 'Fallowash', 'Gorbury', 'Icerimedale', 'Lukewarmford', 'Miracleberry', 'Moodwood', 'Nancaster', 'Noshbourne', 'Staglordshire', 'Swinington', 'Vilefast'],
             'material': ['burlap', 'leather', 'silk', 'taffeta', 'velvet'],
             'race': ['Bung', 'Fribber', 'Jigglehop', 'Mormer', 'Mumblemoo', 'Uffell', 'Wobbit', 'Yobbit', 'Yubnub'],
             'river': ['beck', 'estuary', 'rill', 'runnel'],
-            'sight': ['AboveSight', 'InSight', 'MageSight', 'OutSight', 'SideSight', 'WizardSense', 'mind sight'],
-            'townSquareElement': ['barkers hawking carnival food and human-shaped balloons', 'burghers arguing about livestock prices', 'carpets of huddled vermin roiling toward the outskirts of town', 'demons lecturing their floating daughters', 'dragons disguising themselves as men', 'fiercely unnattractive beggars petitioning for their next meal', 'giants haggling at the dirty eiderdown blanket stalls', 'jugglers throwing balls in the air for threepence', 'mute heralds nailing up flyers on stable doors and alley walls', 'puppeteers wielding their articulated puppets', 'royal butt-wipers hastening palace-ward with armloads of lavatory paper', 'sailors swaggering and flipping their lacquered hair', 'skirling filigrees of energy coruscating over the cobbles', 'doughy waifs stealing apples from apple displays', 'vendors selling sausage in a bun'],
-            'valley': ['dale', 'dell', 'dingle', 'glen', 'gorge', 'lowland', 'plain', 'swale', 'vale']
+            'sight': ['AboveSight', 'InSight', 'MageSight', 'OutSight', 'SideSight', 'mind sight', 'wizard sense'],
+            'townSquareElement': ['barkers hawking carnival food and human-shaped balloons', 'burghers arguing about livestock prices', 'carpets of huddled vermin roiling toward the outskirts of town', 'demons lecturing their floating daughters', 'doughy waifs stealing apples from apple displays', 'dragons disguising themselves as men', 'every animal in the world making a rumpus', 'fiercely unnattractive beggars petitioning for their next meal', 'giants haggling at dirty eiderdown blanket stalls', 'jugglers throwing balls in the air for threepence', 'mute heralds nailing up flyers on stable doors and alley walls', 'puppeteers wielding their articulated puppets', 'royal butt-wipers hastening palace-ward with armloads of lavatory paper', 'sailors swaggering and flipping their lacquered hair', 'skirling filigrees of energy coruscating over the cobbles', 'vendors selling sausage in a bun'],
+            'valley': ['dale', 'dell', 'dingle', 'glen', 'gorge', 'swale', 'vale']
         }
 
         let state = {
