@@ -21,8 +21,8 @@
 
 
 
-        body { 
-            margin: 0;
+        html {
+            cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABFklEQVRYR9WXURLDIAhE6/0PbSdOtUpcd1Gnpv1KGpTHBpCE1/cXq+vrMph7dGvXZTtpfW10DCA5jrH1H0Jhs5E0hnZdCR+vb5S8Nn8mQCeS9BdSalYJqMBjAGzq59xAESN7VFVUgV8AZB/dZBR7QTFDCqGquvUBVVoEtgIwpQRzmANSFHgWQKExHdIrPeuMvQNDarXe6nC/AutgV3JW+6bgqQLeV8FekRtgV+ToDKEKnACYKsfZjjkam7a0ZpYTytwmgainpC3HvwBocgKOxqRjehoR9DFKNFYtOwCGYCszobeCbl26N6yyQ6g8X/Wex/rBPsNEV6qAMaJPMynIHQCoSqS9JSMmwef51LflTgCRszU7DvAGiV6mHWfsaVUAAAAASUVORK5CYII=),auto;
         }
 
         body, 
@@ -32,6 +32,10 @@
             line-height: 1.4;
             margin-bottom: 20px;
             max-width: 36em;
+        }
+
+        body { 
+            margin: 0;
         }
 
         nav {
@@ -84,26 +88,87 @@
             -webkit-appearance: none;
             border-radius: 10px;
             display: block;
+            cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer;
         }
 
 
 
+        /* Buttons and cursors taken from https://nostalgic-css.github.io/NES.css/ */
+        .nes-btn {
+            border-style: solid;
+            border-width: 4px;
+            border-image-slice: 2;
+            border-image-width: 2;
+            border-image-repeat: stretch;
+            border-image-source: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z" fill="rgb(33,37,41)" /></svg>');
+            border-image-outset: 2;
+            position: relative;
+            display: block;
+            padding: 6px 8px;
+            margin: 2em 0;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            color: #212529;
+            background-color: #fff;
+        }
+
+        @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+            .nes-btn {
+                border-image-repeat: space;
+            }
+        }
+
+        @supports (-moz-appearance: meterbar) {
+            .nes-btn {
+                border-image-repeat: stretch;
+            }
+        }
+
+        .nes-btn::after {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            content: "";
+            box-shadow: inset -4px -4px #adafbc;
+        }
+
+        .nes-btn:hover {
+            color: #212529;
+            text-decoration: none;
+            background-color: #e7e7e7;
+        }
+
+        .nes-btn:hover::after {
+            box-shadow: inset -6px -6px #adafbc;
+        }
+
+        .nes-btn:focus {
+            box-shadow: 0 0 0 6px rgba(173, 175, 188, 0.3);
+            outline: 0;
+        }
+        
         .view-button {
             background: none;
             border: none;
-            cursor: pointer;
             display: inline;
             margin: 0;
             text-decoration: underline;
         }
 
-        .title {
-            font-size: 60px;
-        }
-
         .title,
         .subtitle {
             text-align: center;
+        }
+
+        .title {
+            font-size: 60px;
+            margin: 1em;
         }
 
         .next {
@@ -134,7 +199,7 @@
 
 
         #view-about h1 {
-            margin-top: 3em;
+            margin-top: 2em;
         }
 
         #screen-trucking-through-time {
@@ -162,7 +227,7 @@
                     <q>A billionaire wrote that.</q>
                     <figcaption>Conor Lestowka, “372 Pages We'll Never Get Back”, Episode 1</figcaption> <!-- 25:18 -->
                 </figure>
-                <p><button class="next js-next">Ready Player One</button>
+                <p><button class="next js-next nes-btn">Ready Player One</button>
             </div>
 
             <div id="screen-prologue" class="screen hidden">
@@ -190,7 +255,7 @@
                     <p>We called ourselves The Four Score because there were four of us, and we liked to collect high scores in every game we played. We also called ourselves The Jackals.
                     <p>"It is on," I whispered. "It is on like Red Dawn."
                 </div>
-                <p><button class="next js-next">Go to Planet OASIS</button>
+                <p><button class="next js-next nes-btn">Go to Planet OASIS</button>
             </div>
 
             <div id="screen-ready-player-one" class="screen hidden">
@@ -200,25 +265,25 @@
                     <p>I-r0k is leaning against a shelf full of vintage role-playing game supplements. On the far wall, Aech is leaning against a closet door. Art3mis is leaning back on a couch in the center of the room, watching TV.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="key">Browse the vintage role-playing game supplements</button>
-                    <button class="js-choice" data-result="item">Search the closet on the far wall</button>
-                    <button class="js-choice" data-result="lose">Check between the couch cushions</button>
+                    <button class="js-choice nes-btn" data-result="key">Browse the vintage role-playing game supplements</button>
+                    <button class="js-choice nes-btn" data-result="item">Search the closet on the far wall</button>
+                    <button class="js-choice nes-btn" data-result="lose">Check between the couch cushions</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
                         <p class="story">I-r0k is browsing IMDb, trying to memorize actors from every John Hughes movie. He ignores you as you walk over to the stack of books and grab the <i>Tomb of Horrors</i> supplement, a dark web covered in spiders featured prominently on the cover. As you begin flipping pages, an object falls out of the book and into the shag carpet. You bend down and pick it up.
                         <p class="result-points">Gain the Classic '80s Key!
-                        <button class="next js-next">Go to Planet Moon Base</button>
+                        <button class="next js-next nes-btn">Go to Planet Moon Base</button>
                     </div>
                     <div class="result result-item hidden">
                         <p class="story">Aech (pronounced "H") shimmers transparently as you approach, and you tumble to the fact that he's only present via chat link. You open the closet and find stacks upon stacks of weird tinned fish. On top of one stack, you find a Leopardon action figure. You shout its name: "Leopardon!"
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet Moon Base</button>
+                        <button class="next js-next nes-btn">Go to Planet Moon Base</button>
                     </div>
                     <div class="result result-lose hidden">
                         <p class="story">All you find between the couch cushions is a couple bowls worth of stale Capt'n Crunch and the TV remote. You settle down onto the firm couch and change the channel. Art3mis glares at you through several commercials advertising goods and workers, after which Family Ties starts. You tumble to the fact that you are watching Family Ties inside a text adventure game and instantly become depressed.
                         <p class="result-points">Lose 1 life point!
-                        <button class="next js-next">Go to Planet Moon Base</button>
+                        <button class="next js-next nes-btn">Go to Planet Moon Base</button>
                     </div>
                 </div>
             </div>
@@ -230,9 +295,9 @@
                     <p>You see Zack Lightman's parents; his insanely hot mom is covering her mouth with her very long fingers as she chuckles at a joke from her husband. You entered in the middle of the conversation, but you heard the punchline, "You're welcome." The two Mikes are in the corner watching Brady Bunch reruns. Lex is using a QComm; she's probably hacking but there's no way to know for sure. Major Graham Fogg and Major Shin are playing a song from the Raid the Arcade mixtape on their musical instruments to the delight of Atomic Mom, Wodie, Crazy G, and Milo.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="item">Look for food</button>
-                    <button class="js-choice" data-result="key">Listen to the concert</button>
-                    <button class="js-choice" data-result="lose">Set course...for romance!</button>
+                    <button class="js-choice nes-btn" data-result="item">Look for food</button>
+                    <button class="js-choice nes-btn" data-result="key">Listen to the concert</button>
+                    <button class="js-choice nes-btn" data-result="lose">Set course...for romance!</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
@@ -241,7 +306,7 @@
                             <p>You stop your head from nodding and look down at your hand. The Emissary has given you a key.
                         </div>
                         <p class="result-points">Gain the Yoda Kush Key!
-                        <button class="next js-next">Go to Planet Gorzom</button>
+                        <button class="next js-next nes-btn">Go to Planet Gorzom</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -251,7 +316,7 @@
                             <p>You mutter, "Loser sewage worker," then turn back to the crates. As you do, you spot a miniature replica of a Glaive fighter out of the corner of your eye. You yell, "Glaive!"
                         </div>
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet Gorzom</button>
+                        <button class="next js-next nes-btn">Go to Planet Gorzom</button>
                     </div>
                     <div class="result result-lose hidden">
                         <div class="story">
@@ -262,7 +327,7 @@
                             <p>Tyson continues speaking. It's a long speech, like Matt Damon's in the 1997 classic <i>Good Will Hunting</i>, and extremely annoying, like Matt Damon in the 1997 classic <i>Good Will Hunting</i>.
                         </div>
                         <p class="result-points">Lose 1 life point!
-                        <button class="next js-next">Go to Planet Gorzom</button>
+                        <button class="next js-next nes-btn">Go to Planet Gorzom</button>
                     </div>
                 </div>
             </div>
@@ -275,9 +340,9 @@
                     <p>You feel a pleas ant emotion as the warm air quickens through your g-string.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="key">Drink</button>
-                    <button class="js-choice" data-result="lose">Fight</button>
-                    <button class="js-choice" data-result="item">Love</button>
+                    <button class="js-choice nes-btn" data-result="key">Drink</button>
+                    <button class="js-choice nes-btn" data-result="lose">Fight</button>
+                    <button class="js-choice nes-btn" data-result="item">Love</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
@@ -296,7 +361,7 @@
                             <p>Long leave the king !!!!
                         </div>
                         <p class="result-points">winner of the Jay T. Rikosh Key for excellence!
-                        <button class="next js-next">Go to Planet Greater Los Angeles</button>
+                        <button class="next js-next nes-btn">Go to Planet Greater Los Angeles</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -309,7 +374,7 @@
                             <p>You get her number.
                         </div>
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet Greater Los Angeles</button>
+                        <button class="next js-next nes-btn">Go to Planet Greater Los Angeles</button>
                     </div>
                     <div class="result result-lose hidden">
                         <div class="story">
@@ -322,7 +387,7 @@
                             <p>"Mrifk!" You dicker with the notion that you are in jeapardy as a cutlass sheathes into your entrails.
                         </div>
                         <p class="result-points">Lose 1 life point!
-                        <button class="next js-next">Go to Planet Greater Los Angeles</button>
+                        <button class="next js-next nes-btn">Go to Planet Greater Los Angeles</button>
                     </div>
                 </div>
             </div>
@@ -336,9 +401,9 @@
                     <p>After thirty-two seconds, the walkway ends. You know the best way to find the key here: you need to set up a series of meetings.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="item">Take an aircab to your first meeting</button>
-                    <button class="js-choice" data-result="lose">Take a sky bus to your first meeting</button>
-                    <button class="js-choice" data-result="key">Take a skycar to your first meeting</button>
+                    <button class="js-choice nes-btn" data-result="item">Take an aircab to your first meeting</button>
+                    <button class="js-choice nes-btn" data-result="lose">Take a sky bus to your first meeting</button>
+                    <button class="js-choice nes-btn" data-result="key">Take a skycar to your first meeting</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
@@ -362,7 +427,7 @@
                             <p>A ninja leaps out from behind a potted palm tree and slices Hokori in half with a plasteel katanablade. Removing her mask, the real Beth Kittredge presses something into your hand and sprints away. It's a key.
                         </div>
                         <p class="result-points">Gain the PlasKey!
-                        <button class="next js-next">Go to Planet 64-SQUARES</button>
+                        <button class="next js-next nes-btn">Go to Planet 64-SQUARES</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -380,7 +445,7 @@
                             <p>You buy the plazbox of nachos. They're pretty good.
                         </div>
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet 64-SQUARES</button>
+                        <button class="next js-next nes-btn">Go to Planet 64-SQUARES</button>
                     </div>
                     <div class="result result-lose hidden">
                         <div class="story">
@@ -404,7 +469,7 @@
                             <p>He places his metal hand on your shoulder. "Never touch the stuff," said the robot chimp disdainfully.
                             <p class="result-points">Lose 1 life point!
                         </div>
-                        <button class="next js-next">Go to Planet 64-SQUARES</button>
+                        <button class="next js-next nes-btn">Go to Planet 64-SQUARES</button>
                     </div>
                 </div>
             </div>
@@ -417,9 +482,9 @@
                     <p>The board is set up for another case. This case is called The Forensic Certified Public Accountant and the Stolen or Misplaced "Lucky" Dixon Ticonderoga Pencil.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="lose">Assist Drew Samson</button>
-                    <button class="js-choice" data-result="item">Assist Dena Hope</button>
-                    <button class="js-choice" data-result="key">Assist Veronica Jackson</button>
+                    <button class="js-choice nes-btn" data-result="lose">Assist Drew Samson</button>
+                    <button class="js-choice nes-btn" data-result="item">Assist Dena Hope</button>
+                    <button class="js-choice nes-btn" data-result="key">Assist Veronica Jackson</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
@@ -437,7 +502,7 @@
                             <p>Another case solved till the next case that is unsolved. My team and their always improving technology will be ready. We will pass the test with a passing grade.
                         </div>
                         <p class="result-points">Gain the 64-SQUARES Chess Museum Key!
-                        <button class="next js-next">Go to Planet I Don't Remember or Care Where Bob Honey Lived</button>
+                        <button class="next js-next nes-btn">Go to Planet I Don't Remember or Care Where Bob Honey Lived</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -464,7 +529,7 @@
                             <p>I think you have the picture in your mind. It is as fun to look at the blueprints as it is to sneak checkers into a chess museum, but it does not tell you the location of the "Lucky" Dixon Ticonderoga pencil. But Dena Hope teaches you a few hacking tricks, so was it worth it? Yes. Absolutely.
                         </div>
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet I Don't Remember or Care Where Bob Honey Lived</button>
+                        <button class="next js-next nes-btn">Go to Planet I Don't Remember or Care Where Bob Honey Lived</button>
                     </div>
                     <div class="result result-lose hidden">
                         <div class="story">
@@ -479,7 +544,7 @@
                             <p>But while the court was distracted, Ruby Tuesday vanished without a trace. The trail of the "Lucky" Dixon Ticonderoga pencil is cold.
                         </div>
                         <p class="result-points">Lose 1 life point!
-                        <button class="next js-next">Go to Planet I Don't Remember or Care Where Bob Honey Lived</button>
+                        <button class="next js-next nes-btn">Go to Planet I Don't Remember or Care Where Bob Honey Lived</button>
                     </div>
                 </div>
             </div>
@@ -492,15 +557,15 @@
                     <p>You landed near Bob Honey's house. After disembarking, you start walking in the opposite direction.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="lose">Start running</button>
-                    <button class="js-choice" data-result="item">Sit on a bench, close your eyes, and plug your ears</button>
-                    <button class="js-choice" data-result="key">Get back in your spaceship</button>
+                    <button class="js-choice nes-btn" data-result="lose">Start running</button>
+                    <button class="js-choice nes-btn" data-result="item">Sit on a bench, close your eyes, and plug your ears</button>
+                    <button class="js-choice nes-btn" data-result="key">Get back in your spaceship</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
                         <p class="story">As you move out of the atmosphere, you hear the voice of James Ackerman say: "The only way to win is not to play." A key materializes on your dashboard.
                         <p class="result-points">Gain the Pappy Pariah Key!
-                        <button class="next js-next">Go to Planet Albania</button>
+                        <button class="next js-next nes-btn">Go to Planet Albania</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -509,12 +574,12 @@
                             <p>Nah, not doing this. You see a beautiful rainbow. And children playing with puppies. And homemade pie.
                         </div>
                         <p class="result-points">Gain 10 points! Let's get out of here.
-                        <button class="next js-next">Go to Planet Albania</button>
+                        <button class="next js-next nes-btn">Go to Planet Albania</button>
                     </div>
                     <div class="result result-lose hidden">
                         <p class="story">Bob Honey materializes and maliciously mashes your melon with his mallet.
                         <p class="result-points">Lose 1 life point! But it was painless.
-                        <button class="next js-next">Go to Planet Albania</button>
+                        <button class="next js-next nes-btn">Go to Planet Albania</button>
                     </div>
                 </div>
             </div>
@@ -527,9 +592,9 @@
                     <p>You can at least avoid the bedroom.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="key">Explore the ballroom</button>
-                    <button class="js-choice" data-result="item">Explore the kitchen</button>
-                    <button class="js-choice" data-result="lose">Explore the foyer closet</button>
+                    <button class="js-choice nes-btn" data-result="key">Explore the ballroom</button>
+                    <button class="js-choice nes-btn" data-result="item">Explore the kitchen</button>
+                    <button class="js-choice nes-btn" data-result="lose">Explore the foyer closet</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
@@ -549,7 +614,7 @@
                             <p><i>Does he like me? Could any man love a sack, made to endure?</i>
                         </div>
                         <p class="result-points">Gain the Lord Trevethick Key!
-                        <button class="next js-next">Go to Planet Wyoming Territory</button>
+                        <button class="next js-next nes-btn">Go to Planet Wyoming Territory</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -563,7 +628,7 @@
                             <p>"I'll just take...this Caro Nut Pie!" you blurt, grabbing the pie and escaping.
                         </div>
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet Wyoming Territory</button>
+                        <button class="next js-next nes-btn">Go to Planet Wyoming Territory</button>
                     </div>
                     <div class="result result-lose hidden">
                         <div class="story">
@@ -574,7 +639,7 @@
                             <p>"Haaalberrrdsss..." Bleriana whispers. "They are halberdssssss..."
                         </div>
                         <p class="result-points">Lose 1 life point!
-                        <button class="next js-next">Go to Planet Wyoming Territory</button>
+                        <button class="next js-next nes-btn">Go to Planet Wyoming Territory</button>
                     </div>
                 </div>
             </div>
@@ -588,9 +653,9 @@
                     <p>"Would you like to order, hon, or do you need to see a menu?" asks the waitress.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="lose">Ask for a menu</button>
-                    <button class="js-choice" data-result="key">Ask for directions to Fort Collins</button>
-                    <button class="js-choice" data-result="item">Discuss torture and castration</button>
+                    <button class="js-choice nes-btn" data-result="lose">Ask for a menu</button>
+                    <button class="js-choice nes-btn" data-result="key">Ask for directions to Fort Collins</button>
+                    <button class="js-choice nes-btn" data-result="item">Discuss torture and castration</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
@@ -599,7 +664,7 @@
                             <p>You follow her directions for seven days and arrive at Buffalo Gardens, which is like Jurassic Park for buffalo. The folksy robot at the gate hands you a key.
                         </div>
                         <p class="result-points">Gain the Damn It Boy Key!
-                        <button class="next js-next">Go to Planet Diana's Grove</button>
+                        <button class="next js-next nes-btn">Go to Planet Diana's Grove</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -611,7 +676,7 @@
                             <p>You are so excited, you purchase an extra tarp.
                         </div>
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet Diana's Grove</button>
+                        <button class="next js-next nes-btn">Go to Planet Diana's Grove</button>
                     </div>
                     <div class="result result-lose hidden">
                         <div class="story">
@@ -619,7 +684,7 @@
                             <p>Every horrible thought comes into your mind.
                         </div>
                         <p class="result-points">Lose 1 life point!
-                        <button class="next js-next">Go to Planet Diana's Grove</button>
+                        <button class="next js-next nes-btn">Go to Planet Diana's Grove</button>
                     </div>
                 </div>
             </div>
@@ -640,9 +705,9 @@
                     <p>The third mongoose is enormous and wears a collar with a long leash attached.
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="item">Purchase the black mongoose</button>
-                    <button class="js-choice" data-result="key">Purchase the white mongoose</button>
-                    <button class="js-choice" data-result="lose">Purchase the enormous mongoose</button>
+                    <button class="js-choice nes-btn" data-result="item">Purchase the black mongoose</button>
+                    <button class="js-choice nes-btn" data-result="key">Purchase the white mongoose</button>
+                    <button class="js-choice nes-btn" data-result="lose">Purchase the enormous mongoose</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
@@ -656,7 +721,7 @@
                             <p>Physically "dog tired", you decide you had better go to bed. Under your pillow you find a key.
                         </div>
                         <p class="result-points">Gain the Laidly Key of Spindleston Heugh!
-                        <button class="next js-next">Go to Planet Tir Asleen</button>
+                        <button class="next js-next nes-btn">Go to Planet Tir Asleen</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -664,12 +729,12 @@
                             <p>You awake in a bed, feeling like a hound's eye at rest. You suffered quite the head injury; it would have cost some—probably all—their lives in the Southern States of America. But to soften the blow, it appears that some well-wishers have left you with gifts: an earthen teapot, a slop basin, a beat-up Snakes and Ladders game, and a tank of fish born to destroy, to wound, to torture.
                         </div>
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next">Go to Planet Tir Asleen</button>
+                        <button class="next js-next nes-btn">Go to Planet Tir Asleen</button>
                     </div>
                     <div class="result result-lose hidden">
                         <p class="story">You stagger off under the weight of the immense mongoose. The immense, kite-shaped, mongoose. As you pass Doom Tower, a giant kite shaped like a hawk suddenly appears in the sky. Every animal goes silent! A universal depression falls upon all men! The annual migration of African pigeons begins! Runners and statues of Egyptian gods are sent up the kite, but all efforts are unavailing.
                         <p class="result-points">Lose 1 life point!
-                        <button class="next js-next">Go to Planet Tir Asleen</button>
+                        <button class="next js-next nes-btn">Go to Planet Tir Asleen</button>
                     </div>
                 </div>
             </div>
@@ -690,15 +755,15 @@
                     <div id="shadow-moon-chapter-one"></div>
                 </div>
                 <div class="choices">
-                    <button class="js-choice" data-result="item">Counter with a passive charm</button>
-                    <button class="js-choice" data-result="lose">Counter with a small dismissal</button>
-                    <button class="js-choice" data-result="key">Counter with a modest enchantment</button>
+                    <button class="js-choice nes-btn" data-result="item">Counter with a passive charm</button>
+                    <button class="js-choice nes-btn" data-result="lose">Counter with a small dismissal</button>
+                    <button class="js-choice nes-btn" data-result="key">Counter with a modest enchantment</button>
                 </div>
                 <div class="results">
                     <div class="result result-key hidden">
                         <p class="story">"Don't try it, magus! I have the high ground!" you yell. Your modest enchantment poleaxes the minor glamor like a sledgehammer back toward the magus and turns her into a key.
                         <p class="result-points">Gain the Nelwyn Key!
-                        <button class="next js-next js-final">Go to the final level</button>
+                        <button class="next js-next js-final nes-btn">Go to the final level</button>
                     </div>
                     <div class="result result-item hidden">
                         <div class="story">
@@ -708,12 +773,12 @@
                             <p>The two brownies nod to each other, impressed by your great wit.
                         </div>
                         <p class="result-points">Gain 10 points!
-                        <button class="next js-next js-final">Go to the final level</button>
+                        <button class="next js-next js-final nes-btn">Go to the final level</button>
                     </div>
                     <div class="result result-lose hidden">
                         <p class="story">"I have a bad feeling about this," you say to your equine companion. The minor glamor passes through your small dismissal, creating streamers of raw flame which coruscate over an acorn.
                         <p class="result-points">Lose 1 life point!
-                        <button class="next js-next js-final">Go to the final level</button>
+                        <button class="next js-next js-final nes-btn">Go to the final level</button>
                     </div>
                 </div>
             </div>
@@ -736,16 +801,16 @@
                 </div>
                 <div id="shots">
                     <h2 id="instructions"></h2>
-                    <button class="js-shoot" data-character="wade">Shoot Wade Watts</button>
-                    <button class="js-shoot" data-character="zack">Shoot Zack Lightman</button>
-                    <button class="js-shoot" data-character="grignr">Shoot Grignr</button>
-                    <button class="js-shoot" data-character="jake">Shoot Jake Cardigan</button>
-                    <button class="js-shoot" data-character="titus">Shoot Titus Uno, CPA, FCPA, GCMA</button>
-                    <button class="js-shoot" data-character="bob">Shoot Bob Honey</button>
-                    <button class="js-shoot" data-character="maxim">Shoot Lord Trevethick, Maxim Trevelyan</button>
-                    <button class="js-shoot" data-character="chaddale">Shoot Chad Hand and Dale Rhea</button>
-                    <button class="js-shoot" data-character="nathaniel">Shoot Sir Nathaniel de Salis</button>
-                    <button class="js-shoot" data-character="thorn">Shoot Thorn Drumheller</button>
+                    <button class="js-shoot nes-btn" data-character="wade">Shoot Wade Watts</button>
+                    <button class="js-shoot nes-btn" data-character="zack">Shoot Zack Lightman</button>
+                    <button class="js-shoot nes-btn" data-character="grignr">Shoot Grignr</button>
+                    <button class="js-shoot nes-btn" data-character="jake">Shoot Jake Cardigan</button>
+                    <button class="js-shoot nes-btn" data-character="titus">Shoot Titus Uno, CPA, FCPA, GCMA</button>
+                    <button class="js-shoot nes-btn" data-character="bob">Shoot Bob Honey</button>
+                    <button class="js-shoot nes-btn" data-character="maxim">Shoot Lord Trevethick, Maxim Trevelyan</button>
+                    <button class="js-shoot nes-btn" data-character="chaddale">Shoot Chad Hand and Dale Rhea</button>
+                    <button class="js-shoot nes-btn" data-character="nathaniel">Shoot Sir Nathaniel de Salis</button>
+                    <button class="js-shoot nes-btn" data-character="thorn">Shoot Thorn Drumheller</button>
                 </div>
                 <div id="result-wade" class="result story hidden">
                     <p>You point your blaster at Wade Watts and press the trigger. What can only be described as the opposite of a grin spreads over his face. "I guess I should have joined over chat link," he whispers. 
@@ -841,13 +906,13 @@
                     <p id="hint-3" class="hint hidden">Hint #1: There are four special endings.
                     <p id="hint-1" class="hint hidden">Hint #2: You can shoot the same person multiple times.
                     <p id="hint-2" class="hint hidden">Hint #3: Who deserves to be shot the most?
-                    <p><button class="js-reset">Play Again</button>
+                    <p><button class="js-reset nes-btn">Play Again</button>
                 </div>
             </div>
 
             <div id="screen-dead" class="screen hidden">
                 <p class="story">Game over. You go back to level 1 and lose all your items.
-                <p><button class="js-reset">Play again</button>
+                <p><button class="js-reset nes-btn">Play again</button>
             </div>
 
             <template id="shadow-moon-template">
@@ -904,6 +969,7 @@
             <p>Thanks to my wife and podcast cohost Melissa, who contributed a bunch of suggestions, especially for <i>The Lair of the White Worm</i> and <i>Shadow Moon</i>.
             <p>Thanks to Ben De Bono of <a href="http://thescifichristian.com">The Sci-Fi Christian</a>, who turned us on to 372 Pages in the <i>Ready Player One</i> days.
             <p>Thanks to Roux for the <a href="http://rouxscodingcomic.thecomicseries.com/shadowmoonnamegenerator/">Shadow Moon name generator</a>. It inspired the last level and I did borrow a name or two.
+            <p>Thanks to <a href="https://nostalgic-css.github.io/NES.css/">NES.css</a> for the cursor and button styles.
             <p>And to Conor again, who <a href="http://372pages.com/episodes/372pages_008.mp3#t=01:19:47">once said</a>, <q>There's value in creating something that is more than just reciting things that came before it, or telling people what you like.</q>... ¯\_(ツ)_/¯
             
             <h1>Author</h1>
